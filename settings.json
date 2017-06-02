@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://lu:880919Lu@ds058369.mlab.com:58369/sandbox"
+    }
+  }
+}
