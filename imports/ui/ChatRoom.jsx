@@ -27,6 +27,13 @@ class ChatRoom extends Component {
     this.refs.messageInput.value = ''
   }
 
+  handleKeyPress(event) {
+    if (event.key == 'Enter') {
+      event.preventDefault()
+      this.sendMessage(event)
+    }
+  }
+
   render() {
     return (
       <div style={styles.chatRoomView}>
@@ -39,13 +46,16 @@ class ChatRoom extends Component {
               messages={this.props.messages}
               otherUser={this.props.otherUser}
             />
-            <div style={styles.inputBox}>
+            <form
+              style={styles.inputBox}
+              onSubmit={this.sendMessage.bind(this)}>
               <textarea
                 ref='messageInput'
                 placeholder='Please type your message here.'
+                onKeyPress={this.handleKeyPress.bind(this)}
               />
-              <button onClick={this.sendMessage.bind(this)}>Send</button>
-            </div>
+              <button type='submit'> Send </button>
+            </form>
           </div>
         ) : (
           <h2>Chat Room</h2>

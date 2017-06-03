@@ -3,16 +3,18 @@ import React, { Component } from 'react'
 import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import Match from './Match.jsx'
+import { Matches } from '../api/matches.js'
 
-class Matches extends Component {
+import MatchEntry from './MatchEntry.jsx'
+
+class MatchResults extends Component {
   constructor(props) {
     super(props)
   }
 
   renderMatches() {
-    return this.props.users.map((user) => (
-      <Match key={user._id} user={user}/>
+    return this.props.matches.map((match) => (
+      <MatchEntry key={match._id} match={match}/>
     ))
   }
 
@@ -27,9 +29,9 @@ class Matches extends Component {
 }
 
 export default createContainer(() => {
-  Meteor.subscribe('users.all')
+  Meteor.subscribe('matches.user', Meteor.userId())
   
   return {
-    users: Meteor.users.find().fetch()
+    matches: Matches.find({}, {sort: {score: -1}}).fetch()
   }
-}, Matches)
+}, MatchResults)

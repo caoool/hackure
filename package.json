@@ -8,11 +8,10 @@
     "babel-runtime": "^6.20.0",
     "lapack": "^0.1.0",
     "meteor-node-stubs": "~0.2.4",
-    "natural": "^0.5.1",
     "react": "^15.5.4",
     "react-addons-pure-render-mixin": "^15.5.2",
     "react-dom": "^15.5.4",
-    "speakeasy-nlp": "^0.2.12",
+    "string-similarity": "^1.2.0",
     "wordnet-db": "^3.1.2"
   },
   "devDependencies": {}

@@ -13,11 +13,13 @@ export default class SearchBar extends Component {
   search(event) {
     event.preventDefault()
     const text = ReactDOM.findDOMNode(this.refs.searchInput).value.trim()
+    if (!text) { return }
     query = {
       text: text,
       createdBy: Meteor.userId(),
       createdAt: new Date()
     }
+    Meteor.call('queries.match', query)
     Meteor.call('queries.insert', query)
   }
 

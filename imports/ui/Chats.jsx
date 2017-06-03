@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Meteor } from 'meteor/meteor'
 
-import Matches from './Matches.jsx'
+import MatchResults from './MatchResults.jsx'
 import RecentChats from './RecentChats.jsx'
 
 export default class Chats extends Component {
@@ -26,7 +26,7 @@ export default class Chats extends Component {
         <button onClick={this.switchChatPanel.bind(this)}> Matches </button>
         <button onClick={this.switchChatPanel.bind(this)}> Recent </button>
         {(this.state.option == 'Matches') ? (
-          <Matches />
+          <MatchResults />
         ) : (
           <RecentChats />
         )}

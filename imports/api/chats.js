@@ -27,5 +27,14 @@ Meteor.methods({
       createdAt: chat.createdAt,
       createdBy: chat.createdBy
     })
+  },
+
+  'chats.exist'(userIds) {
+    chat = Chats.findOne({
+      userIds: {
+        $all: userIds
+      }
+    })
+    return chat
   }
 })
