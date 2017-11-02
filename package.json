@@ -1,5 +1,5 @@
 {
-  "name": "hackure",
+  "name": "trybe",
   "private": true,
   "scripts": {
     "start": "meteor run",
@@ -16,6 +16,8 @@
     "react": "^15.5.4",
     "react-addons-pure-render-mixin": "^15.5.2",
     "react-dom": "^15.5.4",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "string-similarity": "^1.2.0",
     "wordnet-db": "^3.1.2"
   },
