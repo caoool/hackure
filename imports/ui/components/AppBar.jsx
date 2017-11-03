@@ -1,51 +1,33 @@
 import React, { Component } from 'react'
+import { withTracker } from 'meteor/react-meteor-data';
 
-import SearchBar from './SearchBar.jsx'
-import LoginMenu from './LoginMenu.jsx'
+// import SearchBar from './SearchBar.jsx'
+// import LoginMenu from './LoginMenu.jsx'
+import Logo from './Logo.jsx'
 
-export default class AppBar extends Component {
+class AppBar extends Component {
   constructor(props) {
     super(props)
   }
 
+  renderStyles() {
+    const { primaryColor } = this.props
+    return {
+      background: `rgba(${primaryColor[0]},${primaryColor[1]},${primaryColor[2]},1)`
+    }
+  }
+
   render() {
     return (
-      <div style={styles.nav}>
-        <ul style={styles.ul}>
-          <li style={styles.floatLeft}>
-            <h1>Hackure</h1>
-          </li>
-          <li style={styles.floatLeft}>
-            <SearchBar />
-          </li>
-          <li style={styles.floatRight}>
-            <LoginMenu />
-          </li>
-        </ul>
-      </div>
+      <header className="navbar" style={this.renderStyles()}>
+        <a className="navbar-brand"><Logo /></a>
+      </header>
     )
   }
 }
 
-const styles = {
-  nav: {
-    height: '100px'
-  },
-
-  ul: {
-    listStyleType: 'none',
-    margin: 0,
-    padding: 0,
-    overflow: 'hidden',
-    border: '2px solid grey'
-  },
-
-  floatLeft: {
-    float: 'left',
-    marginRight: '30px'
-  },
-
-  floatRight: {
-    float: 'right'
+export default withTracker(() => {
+  return {
+    primaryColor: Session.get('primaryColor')
   }
-}
+})(AppBar)

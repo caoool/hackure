@@ -1,3 +1,23 @@
-body {
-  background: blue;
-}
+// Variables and mixins
+@import "{}/imports/ui/stylesheets/variables.scss";
+@import "{}/imports/ui/stylesheets/mixins.scss";
+
+// Reset and dependencies
+@import "{}/imports/ui/stylesheets/normalize.scss";
+@import "{}/imports/ui/stylesheets/base.scss";
+
+// Elements
+@import "{}/imports/ui/stylesheets/typography.scss";
+@import "{}/imports/ui/stylesheets/tables.scss";
+@import "{}/imports/ui/stylesheets/buttons.scss";
+
+// Layout
+@import "{}/imports/ui/stylesheets/layout.scss";
+@import "{}/imports/ui/stylesheets/navbar.scss";
+
+// Components
+@import "{}/imports/ui/stylesheets/page.scss";
+
+// Utility classes
+@import "{}/imports/ui/stylesheets/animations.scss";
+@import "{}/imports/ui/stylesheets/utilities.scss";
