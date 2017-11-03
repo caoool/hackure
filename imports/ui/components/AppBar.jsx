@@ -8,25 +8,18 @@ import * as Utils from '../utils'
 import Logo from './Logo.jsx'
 
 class AppBar extends Component {
-  renderStyles() {
-    const { appColor } = this.props
-    return {
-      background: appColor
-    }
-  }
-
   render() {
     return (
-      <header className="navbar" style={this.renderStyles()}>
+      <header className="navbar">
         <section className="_brand">
           <a>
             <Logo />
           </a>
         </section>
         <section className="_icons">
-          <MessageSquare color="white" />
-          <User color="white" />
-          <HelpCircle color="white" />
+          <a><MessageSquare color="white" /></a>
+          <a><User color="white" /></a>
+          <a><HelpCircle color="white" /></a>
         </section>
       </header>
     )
@@ -35,6 +28,5 @@ class AppBar extends Component {
 
 export default withTracker(() => {
   return {
-    appColor: Utils.colorsArrayToString(Session.get('appColor'), 1)
   }
 })(AppBar)

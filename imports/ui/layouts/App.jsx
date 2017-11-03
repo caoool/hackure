@@ -12,13 +12,19 @@ export default class App extends Component {
   constructor(props) {
     super(props)
 
-    Session.set('appColor', Utils.randomColor()); 
-    Session.set('appAnimal', Utils.randomAnimal()); 
+    Session.set('appColor', Utils.randomColor()),
+    Session.set('appAnimal', Utils.randomAnimal())
+  }
+
+  renderAppStyles() {
+    return {
+      background: Utils.colorsArrayToString(Session.get('appColor'), 1)
+    }
   }
 
   render() {
     return (
-      <div className="app">
+      <div className="app" style={this.renderAppStyles()}>
         <AppBar />
         <Router>
           <main>

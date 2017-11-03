@@ -1,26 +1,39 @@
 import React, { Component } from 'react'
-import { withTracker } from 'meteor/react-meteor-data'
-import * as Utils from '../utils'
+import { withTracker }      from 'meteor/react-meteor-data'
+
+import ConcentricCircles    from '../components/ConcentricCircles'
+import SearchBar            from '../components/SearchBar'
+
+import * as Utils           from '../utils'
 
 class HomePage extends Component {
-  renderPageStyles() {
-    const { appColor } = this.props
-    return {
-      background: appColor
-    }
+  renderAnimalBackground() {
+    const { appColor, appAnimal } = this.props,
+          styles = {
+            figure: {
+              backgroundColor: Utils.colorsArrayToString(appColor, 1),
+              backgroundImage: `url(/images/animals/${appAnimal}.png)`
+            }
+          }   
+    return (
+      <figure className="animal-background" style={ styles.figure }></figure>
+    )  
   }
 
   render() {
-    const { appColor, appAnimal } = this.props
-    const styles = {
-      figure: {
-        backgroundColor: appColor,
-        backgroundImage: `url(/images/animals/${appAnimal}.png)`
-      }
-    }  
+    const { appColor } = this.props
+
     return (
-      <div className="page home" style={this.renderPageStyles()}>
-         <figure style={ styles.figure }></figure>
+      <div className="container -page home">
+        <div className="_content">
+          <div className="container _callout">
+            <span className="-weight-1">Find Your Own</span> 
+            <br /> 
+            <span className="-weight-5">Species.</span>
+          </div>
+          <SearchBar appColor={appColor} />
+        </div>
+        { this.renderAnimalBackground() }
       </div>
     );
   }
@@ -28,7 +41,7 @@ class HomePage extends Component {
 
 export default withTracker(() => {
   return {
-    appColor: Utils.colorsArrayToString(Session.get('appColor'), 1),
+    appColor: Session.get('appColor'),
     appAnimal: Session.get('appAnimal')
   }
 })(HomePage);

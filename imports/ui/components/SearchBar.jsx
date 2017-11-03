@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM             from 'react-dom'
 
-import { Meteor } from 'meteor/meteor'
+import { Meteor }     from 'meteor/meteor'
 
-import { Queries } from '../api/queries.js'
+import { Queries } from '../../api/queries.js'
+import * as Utils  from '../utils'
+
+import { ArrowRight } from 'react-feather';
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -24,16 +27,23 @@ export default class SearchBar extends Component {
   }
 
   render() {
+    const { appColor } = this.props;
+    const inputStyles = {
+      background: Utils.lightenDarkenColor(appColor, -10)
+    }
+    const placeholder = `I want to change the world`;
     return (
-      <div>
+      <div className="search-bar">
         <input
-          type="text"
-          ref='searchInput'
-          placeholder='Type keywords to start'
+          type        = "text"
+          style       = { inputStyles }
+          ref         = "searchInput"
+          placeholder = { placeholder }
         />
         <button
-          onClick={this.search.bind(this)}>
-          Match
+          onClick = { this.search.bind(this) }
+        >
+          <ArrowRight color={Utils.colorsArrayToString(appColor, 1)} />
         </button>
       </div>
     )

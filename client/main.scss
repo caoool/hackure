@@ -1,23 +1,27 @@
 // Variables and mixins
-@import "{}/imports/ui/stylesheets/variables.scss";
-@import "{}/imports/ui/stylesheets/mixins.scss";
+@import "{}/imports/ui/stylesheets/variables";
+@import "{}/imports/ui/stylesheets/mixins";
 
 // Reset and dependencies
-@import "{}/imports/ui/stylesheets/normalize.scss";
-@import "{}/imports/ui/stylesheets/base.scss";
+@import "{}/imports/ui/stylesheets/normalize";
+@import "{}/imports/ui/stylesheets/base";
 
 // Elements
-@import "{}/imports/ui/stylesheets/typography.scss";
-@import "{}/imports/ui/stylesheets/tables.scss";
-@import "{}/imports/ui/stylesheets/buttons.scss";
+@import "{}/imports/ui/stylesheets/elements";
+@import "{}/imports/ui/stylesheets/typography";
+@import "{}/imports/ui/stylesheets/tables";
+@import "{}/imports/ui/stylesheets/buttons";
 
 // Layout
-@import "{}/imports/ui/stylesheets/layout.scss";
-@import "{}/imports/ui/stylesheets/navbar.scss";
+@import "{}/imports/ui/stylesheets/layout";
+@import "{}/imports/ui/stylesheets/navbar";
 
-// Components
-@import "{}/imports/ui/stylesheets/page.scss";
+// Specific Pages
+@import "{}/imports/ui/stylesheets/ui_elements";
 
 // Utility classes
-@import "{}/imports/ui/stylesheets/animations.scss";
-@import "{}/imports/ui/stylesheets/utilities.scss";
+@import "{}/imports/ui/stylesheets/animations";
+@import "{}/imports/ui/stylesheets/utilities";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Catamaran:200,300,400,500,600|Prompt:200,300,400,500,600,700');
