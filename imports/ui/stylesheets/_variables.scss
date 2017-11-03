@@ -33,10 +33,16 @@ $link-color: $primary-color !default;
 $link-color-dark: darken($link-color, 5%) !default;
 
 // Fonts
-$base-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto !default;
+$base-font-family: "Catamaran";
 $mono-font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace !default;
 $fallback-font-family: "Helvetica Neue", sans-serif !default;
 $body-font-family: $base-font-family, $fallback-font-family !default;
+
+$font-weight-1: 200;
+$font-weight-2: 300;
+$font-weight-3: 400;
+$font-weight-4: 500;
+$font-weight-5: 600;
 
 // Unit sizes
 $unit-o: .05rem !default;
@@ -63,24 +69,21 @@ $font-size-lg: .9rem !default;
 $line-height: 1rem !default;
 
 // Sizes
-$layout-spacing: $unit-2 !default;
+$layout-spacing: $unit-4 !default;
 $layout-spacing-sm: $unit-1 !default;
-$layout-spacing-lg: $unit-4 !default;
-$border-radius: $unit-h !default;
+$layout-spacing-lg: $unit-7 !default;
+$border-radius: $unit-1 !default;
 $border-width: $unit-o !default;
 $border-width-lg: $unit-h !default;
 $control-size: $unit-9 !default;
 $control-size-sm: $unit-7 !default;
 $control-size-lg: $unit-10 !default;
-$control-padding-x: $unit-2 !default;
-$control-padding-x-sm: $unit-2 * .75 !default;
-$control-padding-x-lg: $unit-2 * 1.5 !default;
-$control-padding-y: ($control-size - $line-height) / 2 - $border-width !default;
-$control-padding-y-sm: ($control-size-sm - $line-height) / 2 - $border-width !default;
-$control-padding-y-lg: ($control-size-lg - $line-height) / 2 - $border-width !default;
+$control-padding: $unit-4 !default;
+$control-padding-sm: $control-padding * .75 !default;
+$control-padding-lg: $control-padding * 1.5 !default;
 $control-icon-size: .8rem !default;
-$control-min-width: 180px !default;
-$control-max-width: 320px !default;
+$control-min-width: 200px !default;
+$control-max-width: 400px !default;
 
 // Responsive breakpoints
 $size-xs: 480px !default;

@@ -1,18 +1,18 @@
 // Buttons
-.btn {
+button {
   @include control-transition();
   appearance: none;
-  background: $bg-color-light;
-  border: $border-width solid $primary-color;
+  background: $light-color;
+  border: none;
   border-radius: $border-radius;
-  color: $primary-color;
+  color: inherit;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   font-size: $font-size;
   height: $control-size;
   line-height: $line-height;
   outline: none;
-  padding: $control-padding-y $control-padding-x;
+  padding: $control-padding $control-padding;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -90,13 +90,13 @@
   &.btn-sm {
     font-size: $font-size-sm;
     height: $control-size-sm;
-    padding: $control-padding-y-sm $control-padding-x-sm;
+    padding: $control-padding-sm $control-padding-sm;
   }
 
   &.btn-lg {
     font-size: $font-size-lg;
     height: $control-size-lg;
-    padding: $control-padding-y-lg $control-padding-x-lg;
+    padding: $control-padding-lg $control-padding-lg;
   }
 
   // Button Block
@@ -140,43 +140,6 @@
 
     &::before {
       content: "\2715";
-    }
-  }
-}
-
-// Button groups
-.btn-group {
-  display: inline-flex;
-  flex-wrap: wrap;
-
-  .btn {
-    flex: 1 0 auto;
-    &:first-child:not(:last-child) {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-    }
-    &:not(:first-child):not(:last-child) {
-      border-radius: 0;
-      margin-left: -$border-width;
-    }
-    &:last-child:not(:first-child) {
-      border-bottom-left-radius: 0;
-      border-top-left-radius: 0;
-      margin-left: -$border-width;
-    }
-    &:focus,
-    &:hover,
-    &:active,
-    &.active {
-      z-index: $zindex-0;
-    }
-  }
-
-  &.btn-group-block {
-    display: flex;
-
-    .btn {
-      flex: 1 0 0;
     }
   }
 }

@@ -19,6 +19,11 @@ body {
   font-size: $font-size;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
+  font-weight: $font-weight-2;
+}
+
+.app {
+  overflow: hidden;
 }
 
 a {

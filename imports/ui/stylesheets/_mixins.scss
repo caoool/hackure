@@ -193,3 +193,11 @@
   flex-wrap: $wrap;
   flex-direction: $direction;
 }
+
+@mixin corner-circle($width, $alpha) {
+  width: #{$width}vw;
+  height: #{$width}vw;
+  top: -#{$width / 2}vw;
+  right: -#{$width / 2}vw;
+  background: rgba(255,255,255,$alpha)
+}

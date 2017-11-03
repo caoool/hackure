@@ -1,13 +1,28 @@
 // Layout
+header {
+  z-index: $zindex-2;
+  position: relative;
+}
+
+main {
+  z-index: $zindex-1;
+  position: relative;
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: $layout-spacing;
-  padding-right: $layout-spacing;
+  padding: $layout-spacing;
+  position: relative;
   width: 100%;
   @extend .clearfix;
 
   $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size;
+
+  &.-page {
+    padding: $layout-spacing-lg;
+    min-height: calc(100vh - 100px);
+  }
 
   &.grid-xl {
     max-width: $grid-spacing * 2 + $size-xl;
