@@ -1,0 +1,16 @@
+// Navbar
+.navbar {
+  height: $navbar-height;
+  padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .navbar-brand {
+    display: block;
+    width: 120px;
+    path {
+      fill: #fff;
+    }
+  }
+}
