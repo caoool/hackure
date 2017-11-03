@@ -3,14 +3,24 @@
   height: $navbar-height;
   padding: 1.5rem;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  .navbar-brand {
+  @include flex(space-between, center, wrap);
+  > section {
+    @include flex(center, center);
+  }
+  ._brand {
     display: block;
     width: 120px;
+    max-height: 100%;
     path {
       fill: #fff;
+    }
+  }
+  ._icons {
+    svg {
+      margin: 0 1rem;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }

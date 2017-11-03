@@ -1,26 +1,33 @@
 import React, { Component } from 'react'
-import { withTracker } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data'
+import { MessageSquare, User, HelpCircle } from 'react-feather';
+import * as Utils from '../utils'
 
 // import SearchBar from './SearchBar.jsx'
 // import LoginMenu from './LoginMenu.jsx'
 import Logo from './Logo.jsx'
 
 class AppBar extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   renderStyles() {
-    const { primaryColor } = this.props
+    const { appColor } = this.props
     return {
-      background: `rgba(${primaryColor[0]},${primaryColor[1]},${primaryColor[2]},1)`
+      background: appColor
     }
   }
 
   render() {
     return (
       <header className="navbar" style={this.renderStyles()}>
-        <a className="navbar-brand"><Logo /></a>
+        <section className="_brand">
+          <a>
+            <Logo />
+          </a>
+        </section>
+        <section className="_icons">
+          <MessageSquare color="white" />
+          <User color="white" />
+          <HelpCircle color="white" />
+        </section>
       </header>
     )
   }
@@ -28,6 +35,6 @@ class AppBar extends Component {
 
 export default withTracker(() => {
   return {
-    primaryColor: Session.get('primaryColor')
+    appColor: Utils.colorsArrayToString(Session.get('appColor'), 1)
   }
 })(AppBar)

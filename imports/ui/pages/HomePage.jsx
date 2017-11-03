@@ -1,18 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { withTracker } from 'meteor/react-meteor-data'
+import * as Utils from '../utils'
 
-export default class HomePage extends Component {
-  renderStyles() {
-    const { primaryColor } = this.props
+class HomePage extends Component {
+  renderPageStyles() {
+    const { appColor } = this.props
     return {
-      background: `rgba(${primaryColor[0]},${primaryColor[1]},${primaryColor[2]},1)`
+      background: appColor
     }
   }
 
   render() {
+    const { appColor, appAnimal } = this.props
+    const styles = {
+      figure: {
+        backgroundColor: appColor,
+        backgroundImage: `url(/images/animals/${appAnimal}.png)`
+      }
+    }  
     return (
-      <div className="page home" style={this.renderStyles()}>
-
+      <div className="page home" style={this.renderPageStyles()}>
+         <figure style={ styles.figure }></figure>
       </div>
     );
   }
 }
+
+export default withTracker(() => {
+  return {
+    appColor: Utils.colorsArrayToString(Session.get('appColor'), 1),
+    appAnimal: Session.get('appAnimal')
+  }
+})(HomePage);
+
