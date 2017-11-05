@@ -17,6 +17,7 @@ button {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  position: relative;
   &.-large {
     padding: $control-padding $control-padding * 2;
   }

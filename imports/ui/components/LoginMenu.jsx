@@ -5,10 +5,14 @@ import { withTracker } from 'meteor/react-meteor-data'
 import * as Utils  from '../utils'
 
 import GoogleLogo from './GoogleLogo'
+import { LogOut, LogIn } from 'react-feather';
 
 class LoginMenu extends Component {
   constructor(props) {
     super(props)
+
+    this.logout          = this.logout.bind(this);
+    this.loginWithGoogle = this.loginWithGoogle.bind(this);
   }
 
   loginWithGoogle(event) {
@@ -28,30 +32,40 @@ class LoginMenu extends Component {
   }
 
   loggedInState() {
-    return (
-      <div>
-        <span>Welcome back: {this.props.currentUser.profile.name}</span>
-        <button onClick={this.logout.bind(this)}>
-          Logout
-        </button>
-      </div>
-    )
+    const { context } = this.props
+
+    if (context == "menu") {
+      return (
+        <a 
+          className    = "tooltip -bottom" 
+          data-tooltip = "Log Out" 
+          onClick      = { this.logout }
+        >
+          <LogOut color="white" />
+        </a>
+      )
+    }
   }
 
   loggedOutState() {
-    const { buttonColor } = this.props;
+    const { buttonColor, context } = this.props,
+          loggedOutState = context == "menu" ?
+            <a 
+              className    = "tooltip -bottom" 
+              data-tooltip = "Log In" 
+              onClick      = { this.loginWithGoogle }
+            >
+              <LogIn color="white" />
+            </a> :
+            <button className="login-button" onClick={this.loginWithGoogle}>
+              <GoogleLogo fill={buttonColor} /> Login With Google
+            </button>      
 
-    return (
-      <div>
-        <button className=" login-button" onClick={this.loginWithGoogle.bind(this)}>
-          <GoogleLogo fill={buttonColor} /> Login With Google
-        </button>
-      </div>    
-    )
+    return loggedOutState
   }
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, context } = this.props;
     
     return currentUser ? this.loggedInState() : this.loggedOutState();
   }

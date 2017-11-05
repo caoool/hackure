@@ -5,7 +5,7 @@ import ConcentricCircles from '../components/ConcentricCircles'
 import SearchBar         from '../components/SearchBar'
 import LoginMenu         from '../components/LoginMenu'
 
-import * as Utils           from '../utils'
+import * as Utils from '../utils'
 
 class HomePage extends Component {
   renderAnimalBackground() {
@@ -23,11 +23,11 @@ class HomePage extends Component {
  
   renderLoginState() {
     const { currentUser, appColor } = this.props,
-          toRender = currentUser ? 
+          loginstate = currentUser ? 
               <SearchBar appColor={appColor} /> :
               <LoginMenu buttonColor={appColor} />
     
-    return toRender
+    return loginstate
   }
 
   render() {

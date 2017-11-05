@@ -3,6 +3,7 @@
   min-width: $control-min-width;
   max-width: $control-max-width * 2;
   position: relative;
+  @include flex();
   textarea {
     line-height: $line-height * 2;
     resize: vertical;
@@ -18,7 +19,7 @@
     border: none;
     border-radius: $border-radius;
     color: $light-color;
-    display: block;
+    display: inline-flex;
     font-size: $font-size-lg;
     font-weight: $font-weight-1;
     font-family: $mono-font-family;
@@ -31,14 +32,12 @@
     letter-spacing: 1px;
   }
   button {
-    position: absolute;
-    right: 0;
-    top: 0;
+    display: inline-flex;
     padding: $control-padding $control-padding * 2;
-    height: 100%;
     border-radius: $border-radius;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    width: 88px;
   }
 }
 
