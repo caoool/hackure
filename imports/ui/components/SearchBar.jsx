@@ -15,13 +15,18 @@ export default class SearchBar extends Component {
 
   search(event) {
     event.preventDefault()
+
     const text = ReactDOM.findDOMNode(this.refs.searchInput).value.trim()
-    if (!text) { return }
+    if (!text) { 
+      return 
+    }
+
     query = {
       text: text,
       createdBy: Meteor.userId(),
       createdAt: new Date()
     }
+
     Meteor.call('queries.match', query)
     Meteor.call('queries.insert', query)
   }
@@ -34,12 +39,12 @@ export default class SearchBar extends Component {
     const placeholder = `I want to change the world`;
     return (
       <div className="search-bar">
-        <input
+        <textarea
           type        = "text"
           style       = { inputStyles }
           ref         = "searchInput"
           placeholder = { placeholder }
-        />
+        ></textarea>
         <button
           onClick = { this.search.bind(this) }
         >

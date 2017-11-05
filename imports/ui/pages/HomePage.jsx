@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { withTracker }      from 'meteor/react-meteor-data'
 
-import ConcentricCircles    from '../components/ConcentricCircles'
-import SearchBar            from '../components/SearchBar'
+import ConcentricCircles from '../components/ConcentricCircles'
+import SearchBar         from '../components/SearchBar'
+import LoginMenu         from '../components/LoginMenu'
 
 import * as Utils           from '../utils'
 
@@ -19,6 +20,15 @@ class HomePage extends Component {
       <figure className="animal-background" style={ styles.figure }></figure>
     )  
   }
+ 
+  renderLoginState() {
+    const { currentUser, appColor } = this.props,
+          toRender = currentUser ? 
+              <SearchBar appColor={appColor} /> :
+              <LoginMenu buttonColor={appColor} />
+    
+    return toRender
+  }
 
   render() {
     const { appColor } = this.props
@@ -31,7 +41,7 @@ class HomePage extends Component {
             <br /> 
             <span className="-weight-5">Species.</span>
           </div>
-          <SearchBar appColor={appColor} />
+          { this.renderLoginState() }
         </div>
         { this.renderAnimalBackground() }
       </div>
@@ -41,8 +51,9 @@ class HomePage extends Component {
 
 export default withTracker(() => {
   return {
-    appColor: Session.get('appColor'),
-    appAnimal: Session.get('appAnimal')
+    appColor    : Session.get('appColor'),
+    appAnimal   : Session.get('appAnimal'),
+    currentUser : Meteor.user()
   }
 })(HomePage);
 

@@ -3,7 +3,14 @@
   min-width: $control-min-width;
   max-width: $control-max-width * 2;
   position: relative;
+  textarea {
+    line-height: $line-height * 2;
+    resize: vertical;
+  }
   input {
+    line-height: $line-height;
+  }
+  input, textarea {
     @include control-transition();
     appearance: none;
     background: rgba($light-color, 0.1);
@@ -16,7 +23,6 @@
     font-weight: $font-weight-1;
     font-family: $mono-font-family;
     height: $control-size * 2;
-    line-height: $line-height;
     outline: none;
     padding: $control-padding;
     position: relative;

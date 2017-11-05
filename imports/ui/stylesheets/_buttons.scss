@@ -1,38 +1,47 @@
 // Buttons
 button {
   @include control-transition();
+  @include flex(center, center);
   appearance: none;
   background: $light-color;
   border: none;
   border-radius: $border-radius;
   color: inherit;
   cursor: pointer;
-  display: inline-flex;
   font-size: $font-size;
-  height: $control-size;
   line-height: $line-height;
   outline: none;
-  padding: $control-padding $control-padding;
+  padding: $control-padding;
   text-align: center;
   text-decoration: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  &:focus {
-    @include control-shadow();
+  &.-large {
+    padding: $control-padding $control-padding * 2;
   }
-  &:focus,
+  &.-raised {
+    box-shadow: $box-shadow-2;
+    &:hover, &:active, &:focus {
+      box-shadow: $box-shadow-3; 
+    }
+  }
+  &:after {
+    content: "";
+    @include control-transition();
+    @include positioning(absolute, 0, 0);
+    width: 100%;
+    height: 100%;
+    background: rgba($dark-color, 0.2);
+    opacity: 0;
+  }
   &:hover {
-    background: $secondary-color;
-    border-color: $primary-color-dark;
-    text-decoration: none;
+    &:after {
+      opacity: 1;
+    }
   }
   &:active,
   &.active {
-    background: $primary-color-dark;
-    border-color: darken($primary-color-dark, 5%);
-    color: $light-color;
-    text-decoration: none;
     &.loading {
       &::after {
         border-bottom-color: $light-color;
@@ -48,33 +57,8 @@ button {
     pointer-events: none;
   }
 
-  // Button Primary
-  &.btn-primary {
-    background: $primary-color;
-    border-color: $primary-color-dark;
-    color: $light-color;
-    &:focus,
-    &:hover {
-      background: darken($primary-color-dark, 2%);
-      border-color: darken($primary-color-dark, 5%);
-      color: $light-color;
-    }
-    &:active,
-    &.active {
-      background: darken($primary-color-dark, 4%);
-      border-color: darken($primary-color-dark, 7%);
-      color: $light-color;
-    }
-    &.loading {
-      &::after {
-        border-bottom-color: $light-color;
-        border-left-color: $light-color;
-      }
-    }
-  }
-
   // Button Link
-  &.btn-link {
+  &.-link {
     background: transparent;
     border-color: transparent;
     color: $link-color;
@@ -87,41 +71,41 @@ button {
   }
 
   // Button Sizes
-  &.btn-sm {
+  &.-sm {
     font-size: $font-size-sm;
     height: $control-size-sm;
     padding: $control-padding-sm $control-padding-sm;
   }
 
-  &.btn-lg {
+  &.-lg {
     font-size: $font-size-lg;
     height: $control-size-lg;
     padding: $control-padding-lg $control-padding-lg;
   }
 
   // Button Block
-  &.btn-block {
+  &.-block {
     display: block;
     width: 100%;
   }
 
   // Button Action
-  &.btn-action {
+  &.-action {
     width: $control-size;
     padding-left: 0;
     padding-right: 0;
 
-    &.btn-sm {
+    &.-sm {
       width: $control-size-sm;
     }
 
-    &.btn-lg {
+    &.-lg {
       width: $control-size-lg;
     }
   }
 
   // Button Clear
-  &.btn-clear {
+  &.-clear {
     background: transparent;
     border: 0;
     color: currentColor;

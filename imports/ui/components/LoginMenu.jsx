@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 
 import { Meteor } from 'meteor/meteor'
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
+import * as Utils  from '../utils'
+
+import GoogleLogo from './GoogleLogo'
 
 class LoginMenu extends Component {
   constructor(props) {
@@ -24,29 +27,39 @@ class LoginMenu extends Component {
     Meteor.logout()
   }
 
-  render() {
-    const toRender = this.props.currentUser ? (
+  loggedInState() {
+    return (
       <div>
         <span>Welcome back: {this.props.currentUser.profile.name}</span>
         <button onClick={this.logout.bind(this)}>
           Logout
         </button>
       </div>
-    ) : (
-      <div>
-        <button onClick={this.loginWithGoogle.bind(this)}>
-          Login With Google
-        </button>
-      </div>
     )
+  }
 
-    return toRender
+  loggedOutState() {
+    const { buttonColor } = this.props;
+
+    return (
+      <div>
+        <button className=" login-button" onClick={this.loginWithGoogle.bind(this)}>
+          <GoogleLogo fill={buttonColor} /> Login With Google
+        </button>
+      </div>    
+    )
+  }
+
+  render() {
+    const { currentUser } = this.props;
+    
+    return currentUser ? this.loggedInState() : this.loggedOutState();
   }
 }
 
-export default createContainer(() => {
+export default withTracker(() => {
   return {
     currentUser: Meteor.user()
   }
-}, LoginMenu)
+})(LoginMenu)
 
