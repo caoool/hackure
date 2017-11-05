@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Meteor } from 'meteor/meteor'
 
-import { Messages } from '../api/messages.js'
+import { Messages } from '../../api/messages.js'
 
 import ChatMessage from './ChatMessage.jsx'
 

@@ -24,9 +24,9 @@ class AppBar extends Component {
           <Link to="/chat" style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Chat">
             <MessageSquare color="white" />
           </Link>
-          <a style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Profile">
+          <Link to="/profile" style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Profile">
             <User color="white" />
-          </a>
+          </Link>
           <Link to="/about" className="tooltip -bottom" data-tooltip="What is This?">
             <HelpCircle color="white" />
           </Link>

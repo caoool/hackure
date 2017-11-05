@@ -4,8 +4,8 @@ import { Meteor } from 'meteor/meteor'
 import { Session } from 'meteor/session'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import { Chats } from '../api/chats.js'
-import { Messages } from '../api/messages.js'
+import { Chats } from '../../api/chats.js'
+import { Messages } from '../../api/messages.js'
 
 import ChatMessages from './ChatMessages.jsx'
 

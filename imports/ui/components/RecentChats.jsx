@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Meteor } from 'meteor/meteor'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import { Chats } from '../api/chats.js'
+import { Chats } from '../../api/chats.js'
 
 import RecentChat from './RecentChat.jsx'
 

@@ -9,6 +9,7 @@ import AuthRoute from './AuthRoute.jsx'
 import HomePage     from '../../ui/pages/HomePage.jsx';
 import ChatPage     from '../../ui/pages/ChatPage.jsx';
 import AboutPage    from '../../ui/pages/AboutPage.jsx';
+import ProfilePage  from '../../ui/pages/ProfilePage.jsx';
 import NotFoundPage from '../../ui/pages/NotFoundPage.jsx';
 import AppBar from '../components/AppBar.jsx';
 
@@ -38,6 +39,7 @@ class App extends Component {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/chat" component={ChatPage} />
               <Route exact path="/about" component={AboutPage} />
+              <Route exact path="/profile" component={ProfilePage} />
               <Route component={NotFoundPage} />
             </Switch>
           </main>
