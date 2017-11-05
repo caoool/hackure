@@ -14,10 +14,12 @@
   input, textarea {
     @include control-transition();
     appearance: none;
-    background: rgba($light-color, 0.1);
+    background: rgba($light-color, 0.15);
     background-image: none;
     border: none;
     border-radius: $border-radius;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;   
     color: $light-color;
     display: inline-flex;
     font-size: $font-size-lg;
@@ -33,11 +35,11 @@
   }
   button {
     display: inline-flex;
-    padding: $control-padding $control-padding * 2;
+    padding: $control-padding;
     border-radius: $border-radius;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    width: 88px;
+    width: $search-button-width;
   }
 }
 

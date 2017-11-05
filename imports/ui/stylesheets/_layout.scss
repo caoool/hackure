@@ -15,6 +15,7 @@ main {
   padding: $layout-spacing;
   position: relative;
   width: 100%;
+  text-align: left;
   @extend .clearfix;
 
   $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size;

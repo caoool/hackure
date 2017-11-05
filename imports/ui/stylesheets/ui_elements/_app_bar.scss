@@ -1,6 +1,6 @@
 // Navbar
 .navbar {
-  height: $navbar-height;
+  height: $appbar-height;
   padding: 1.5rem;
   width: 100%;
   @include flex(space-between, center, wrap);

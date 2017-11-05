@@ -58,8 +58,12 @@
   font-style: italic;
 }
 
+.-small {
+  font-size: $font-size-sm;
+}
+
 .-large {
-  font-size: 1.2em;
+  font-size: $font-size-lg;
 }
 
 
