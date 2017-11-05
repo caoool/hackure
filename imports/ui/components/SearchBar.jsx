@@ -33,15 +33,11 @@ export default class SearchBar extends Component {
 
   render() {
     const { appColor } = this.props;
-    const inputStyles = {
-      background: Utils.lightenDarkenColor(appColor, -10)
-    }
     const placeholder = `I want to change the world`;
     return (
       <div className="search-bar">
         <textarea
           type        = "text"
-          style       = { inputStyles }
           ref         = "searchInput"
           placeholder = { placeholder }
         ></textarea>

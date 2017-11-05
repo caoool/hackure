@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data'
 import { MessageSquare, User, HelpCircle, LogOut, LogIn } from 'react-feather';
 import * as Utils from '../utils'
@@ -15,14 +16,20 @@ class AppBar extends Component {
     return (
       <header className="navbar">
         <section className="_brand">
-          <a>
+          <Link to="/">
             <Logo />
-          </a>
+          </Link>
         </section>
         <section className="_icons">
-          <a style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Chat"><MessageSquare color="white" /></a>
-          <a style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Profile"><User color="white" /></a>
-          <a className="tooltip -bottom" data-tooltip="What is This?"><HelpCircle color="white" /></a>
+          <Link to="/chat" style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Chat">
+            <MessageSquare color="white" />
+          </Link>
+          <a style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Profile">
+            <User color="white" />
+          </a>
+          <Link to="/about" className="tooltip -bottom" data-tooltip="What is This?">
+            <HelpCircle color="white" />
+          </Link>
           <LoginMenu context="menu" />
         </section> 
       </header>
