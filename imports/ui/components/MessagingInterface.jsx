@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 
 import { Meteor } from 'meteor/meteor'
 import { Session } from 'meteor/session'
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
 
 import { Chats } from '../../api/chats.js'
 import { Messages } from '../../api/messages.js'
 
 import ChatMessages from './ChatMessages.jsx'
 
-class ChatRoom extends Component {
+class MessagingInterface extends Component {
   constructor(props) {
     super(props)
   }
@@ -36,7 +36,7 @@ class ChatRoom extends Component {
 
   render() {
     return (
-      <div style={styles.chatRoomView}>
+      <div className="messaging-interface">
         {this.props.otherUser ? (
           <div>
             <h2>
@@ -47,7 +47,6 @@ class ChatRoom extends Component {
               otherUser={this.props.otherUser}
             />
             <form
-              style={styles.inputBox}
               onSubmit={this.sendMessage.bind(this)}>
               <textarea
                 ref='messageInput'
@@ -65,7 +64,7 @@ class ChatRoom extends Component {
   }
 }
 
-export default createContainer((props) => {
+export default withTracker((props) => {
   const currentChatId = Session.get('CURRENT_CHAT_ID')
   Meteor.subscribe('chats.chat_id', currentChatId)
   Meteor.subscribe('messages.chat', currentChatId)
@@ -87,23 +86,4 @@ export default createContainer((props) => {
     otherUser: otherUser,
     messages: Messages.find().fetch()
   }
-}, ChatRoom)
-
-
-const styles = {
-  chatRoomView: {
-    position: 'relative',
-    overflowY: 'auto',
-    height: '100%',
-    width: '100%',
-    border: 'solid 2px grey'
-  },
-
-  inputBox: {
-    position: 'absolute',
-    bottom: '0',
-    width: '100%',
-    height: '50px',
-    border: 'solid 2px blue'
-  }
-}
+})(MessagingInterface)

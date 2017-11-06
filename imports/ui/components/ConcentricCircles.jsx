@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import * as Utils  from '../utils'
 
-const ConcentricCircles = ({ appColor, mode }) => {
+const ConcentricCircles = ({ colorProp }) => {
+  const color = colorProp || Session.get("appColor");
+
   return (
     <figure className="concentric-circles">
-      <div style={{ background: Utils.lightenDarkenColor(appColor, -25) }}></div>
-      <div style={{ background: Utils.lightenDarkenColor(appColor, -20) }}></div>
-      <div style={{ background: Utils.lightenDarkenColor(appColor, -10) }}></div>
-      <div style={{ background: Utils.lightenDarkenColor(appColor, -5) }}></div>
+      <div style={{ background: Utils.lightenDarkenColor(color, -25) }}></div>
+      <div style={{ background: Utils.lightenDarkenColor(color, -20) }}></div>
+      <div style={{ background: Utils.lightenDarkenColor(color, -10) }}></div>
+      <div style={{ background: Utils.lightenDarkenColor(color, -5) }}></div>
     </figure>
   )
 }

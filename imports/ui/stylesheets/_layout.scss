@@ -18,31 +18,13 @@ main {
   text-align: left;
   @extend .clearfix;
 
-  $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size;
-
   &.-page {
     padding: $layout-spacing-lg;
-    min-height: calc(100vh - 100px);
-  }
-
-  &.grid-xl {
-    max-width: $grid-spacing * 2 + $size-xl;
-  }
-
-  &.grid-lg {
-    max-width: $grid-spacing * 2 + $size-lg;
-  }
-
-  &.grid-md {
-    max-width: $grid-spacing * 2 + $size-md;
-  }
-
-  &.grid-sm {
-    max-width: $grid-spacing * 2 + $size-sm;
-  }
-
-  &.grid-xs {
-    max-width: $grid-spacing * 2 + $size-xs;
+    min-height: $page-content-height;
+    ._content {
+      position: relative;
+      z-index: $zindex-1 + 1;
+    }
   }
 }
 
@@ -62,7 +44,7 @@ main {
   margin-left: -$layout-spacing;
   margin-right: -$layout-spacing;
 
-  &.col-gapless {
+  &.-gapless {
     margin-left: 0;
     margin-right: 0;
 
@@ -71,7 +53,7 @@ main {
       padding-right: 0;
     }
   }
-  &.col-oneline {
+  &.-oneline {
     flex-wrap: nowrap;
     overflow-x: auto;
   }

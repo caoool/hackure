@@ -1,3 +1,9 @@
-.about {
-  background: $light-color;
+.-page.about {
+  color: $light-color;
+  ._content {
+    width: 50%;
+    max-width: 100%;
+    min-width: 400px;
+    margin: 0;
+  }
 }

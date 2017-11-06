@@ -1,3 +1,36 @@
-.chat {
+.-page.chat {
+  @include flex(space-between, stretch);
   background: $light-color;
+  padding: 0;
+  max-height: $page-content-height;
+  > * {
+    overflow-y: scroll;
+  }
+}
+
+.chat-sidebar {
+  width: 25%;
+  flex: 0 0 25%;
+  border-right: 1px solid $gray-color-light;
+  ._menu {
+    overflow: hidden;
+    max-width: 100%;
+    // @include flex(space-between, center);  
+    border-bottom: 1px solid $gray-color-light;
+    button {
+      @include flex(center, center, wrap);
+      padding: $unit-3 $unit-2;
+      footer {
+        font-size: $font-size / 1.5;
+        text-transform: uppercase;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.messaging-interface {
+  width: 75%;
+  flex: 1 0 25%;
+  padding: $unit-4;
 }

@@ -13,16 +13,13 @@ class MatchResults extends Component {
   }
 
   renderMatches() {
-    return this.props.matches.map((match) => (
-      <MatchEntry key={match._id} match={match}/>
-    ))
+    return this.props.matches.map(match => <MatchEntry key={match._id} match={match} />)
   }
 
   render() {
     return (
       <div>
-        <h2>Matches</h2>
-        {this.renderMatches()}
+        { this.renderMatches() }
       </div>
     )
   }
