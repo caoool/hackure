@@ -12,6 +12,7 @@ export default class ChatSidebar extends Component {
   constructor(props) {
     super(props)
 
+    this.appColor = Utils.colorsArrayToString(Session.get('appColor'), 1)
     this.switchChatPanel = this.switchChatPanel.bind(this)
 
     this.state = {
@@ -33,7 +34,7 @@ export default class ChatSidebar extends Component {
   }
 
   activeIconStyles(mode) {
-    return mode == this.state.mode ? { color: Utils.colorsArrayToString(Session.get('appColor'), 1) } : {}
+    return mode == this.state.mode ? { color: this.appColor } : {}
   }
 
   renderSidebarMenu() {

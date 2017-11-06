@@ -22,7 +22,6 @@
     white-space: pre;
     z-index: $zindex-3;
   }
-  &:focus,
   &:hover {
     &::after {
       opacity: 1;
@@ -40,8 +39,7 @@
       left: 100%;
       transform: translate(-$unit-1, 50%);
     }
-    &:focus,
-    &:hover {
+      &:hover {
       &::after {
         transform: translate($unit-1, 50%);
       }
@@ -54,8 +52,7 @@
       top: 100%;
       transform: translate(-50%, -$unit-2);
     }
-    &:focus,
-    &:hover {
+      &:hover {
       &::after {
         transform: translate(-50%, $unit-1);
       }
@@ -69,8 +66,7 @@
       right: 100%;
       transform: translate($unit-2, 50%);
     }
-    &:focus,
-    &:hover {
+      &:hover {
       &::after {
         transform: translate(-$unit-1, 50%);
       }

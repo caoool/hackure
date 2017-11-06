@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 
 import { Meteor } from 'meteor/meteor'
 import { Session } from 'meteor/session'
+import moment from 'moment'
+import * as Utils  from '../utils'
 
 export default class MatchEntry extends Component {
   constructor(props) {
     super(props)
+
+    this.appColor = Utils.colorsArrayToString(Session.get('appColor'), 0.8)
+    this.chat = this.chat.bind(this)
   }
 
   chat(event) {
@@ -32,24 +37,25 @@ export default class MatchEntry extends Component {
   }
 
   render() {
+    const { match } = this.props
     return (
-      <div style={styles.match}>
-        <h3 style={styles.score}>SCORE: {this.props.match.score}</h3>
-        <h3>{this.props.match.user.profile.name}</h3>
-        <p>Based on query: {this.props.match.query.text}</p>
-        <p>Searched at: {this.props.match.query.createdAt.toString()}</p>
-        <button onClick={this.chat.bind(this)}>Chat</button>
+      <div className="match-entry" onClick={this.chat}>
+        <section className="_img">
+          <img className="-circle" src={match.user.services.google.picture} />
+        </section>
+        <section className="_data">
+          <header>
+            <div>{ Math.ceil(match.score * 100) }% match</div>
+            <div>{ moment(match.query.createdAt).fromNow() }</div>
+          </header>
+          <article>
+            <div>
+              <div>{ match.user.profile.name }</div>
+              <div className="_query">Because you searched: { match.query.text }</div>
+            </div>
+          </article>
+        </section>
       </div>
     )
-  }
-}
-
-const styles = {
-  match: {
-    border: 'solid 2px green'
-  },
-
-  score: {
-    color: 'red'
   }
 }

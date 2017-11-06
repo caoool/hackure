@@ -11,19 +11,69 @@
 .chat-sidebar {
   width: 25%;
   flex: 0 0 25%;
+  min-width: 275px;
   border-right: 1px solid $gray-color-light;
   ._menu {
     overflow: hidden;
     max-width: 100%;
-    // @include flex(space-between, center);  
+    background: $light-color; 
     border-bottom: 1px solid $gray-color-light;
     button {
       @include flex(center, center, wrap);
       padding: $unit-3 $unit-2;
+      border-radius: 0;
       footer {
         font-size: $font-size / 1.5;
         text-transform: uppercase;
+        letter-spacing: 1px;
         width: 100%;
+      }
+    }
+  }
+}
+
+.match-entry {
+  border-bottom: 1px solid $gray-color-light;
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  padding: $unit-2;
+  @include flex(space-between, center);
+  @include control-transition();
+  &:hover {
+    background: rgba($dark-color, 0.1);
+  }
+  > section {
+    display: inline-block;
+  }
+  ._img {
+    width: 3rem;
+    height: 3rem;
+    padding-right: $unit-2;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ._data {
+    padding-left: $unit-2;
+    width: calc(100% - 3rem);
+    header {
+      @include flex(space-between, center);
+      font-size: $font-size / 1.5;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: $dark-color;
+      margin-bottom: $unit-1;
+    }
+    article {
+      @include flex(space-between, center);
+      > * {
+        display: inline-block;
+        flex: 1;
+      }
+      ._query {
+        color: rgba($body-font-color, 0.5);
+        font-size: $font-size / 1.25;
       }
     }
   }

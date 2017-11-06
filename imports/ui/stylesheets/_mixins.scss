@@ -83,8 +83,8 @@
 }
 
 // Component transition
-@mixin control-transition() {
-  transition: all 250ms cubic-bezier(0.75, -0.03, 0.33, 1.18);;
+@mixin control-transition($type: ease-in-out) {
+  transition: all 250ms $type;
 }
 
 // Label base style
