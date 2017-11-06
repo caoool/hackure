@@ -27,7 +27,7 @@ button {
       box-shadow: $box-shadow-3; 
     }
   }
-  &:after {
+  &:not(.tooltip):after {
     content: "";
     @include control-transition();
     @include positioning(absolute, 0, 0);

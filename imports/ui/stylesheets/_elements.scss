@@ -1,7 +1,8 @@
 .concentric-circles {
   position: absolute;
-  // top: -15vh;
+  top: 50%;
   right: 0;
+  transform: translate3d(0,-50%,0);
   > * {
     position: absolute;
     border-radius: 100%;

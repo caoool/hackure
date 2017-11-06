@@ -1,5 +1,5 @@
 import random from 'lodash/random'
-import * as Constants from './constants'
+import * as Constants from '../constants'
 
 const getRandomItemFromArray = (array) => {
   return array[random(array.length - 1)]

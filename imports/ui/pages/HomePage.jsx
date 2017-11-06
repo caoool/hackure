@@ -44,7 +44,7 @@ class HomePage extends Component {
           { this.renderLoginState() }
         </div>
         { this.renderAnimalBackground() }
-        <ConcentricCircles appColor={appColor} />
+        <ConcentricCircles />
       </div>
     );
   }

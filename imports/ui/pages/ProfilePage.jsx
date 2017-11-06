@@ -7,12 +7,15 @@ import * as Utils from '../utils'
 class ProfilePage extends Component {
   render() {
     const { appColor, currentUser } = this.props,
+          pageStyle = { background:  Utils.colorsArrayToString(appColor, 0.75) } 
           title = currentUser ? <h1>Hello, { currentUser.profile.name } </h1> : ""
 
     return (
       <div className="container -page profile">
+        <div className="_content" style={pageStyle}>
         { title }
-        <ConcentricCircles appColor={appColor}/>
+        </div>
+        <ConcentricCircles />
       </div>
     );
   }

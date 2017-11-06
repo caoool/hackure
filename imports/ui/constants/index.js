@@ -21,3 +21,9 @@ export const APP_ANIMALS = [
   'sheep',
   'yak'
 ]
+
+export const CHAT_SIDEBAR_MODES = {
+  matches : 0,
+  recent  : 1,
+  filter  : 2
+}

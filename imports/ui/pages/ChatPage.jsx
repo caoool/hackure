@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { withTracker }      from 'meteor/react-meteor-data'
 
-import ConcentricCircles from '../components/ConcentricCircles'
-import Chats from '../components/Chats'
-import ChatRoom from '../components/ChatRoom'
+import ChatSidebar from '../components/ChatSidebar'
+import MessagingInterface from '../components/MessagingInterface'
 
 import * as Utils from '../utils'
 
@@ -13,8 +12,8 @@ class ChatPage extends Component {
 
     return (
       <div className="container -page chat">
-        <Chats />
-        <ChatRoom />
+        <ChatSidebar />
+        <MessagingInterface />
       </div>
     );
   }
