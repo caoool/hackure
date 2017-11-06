@@ -6,6 +6,7 @@
   > * {
     position: absolute;
     border-radius: 100%;
+    background: rgba(0,0,0,0.035) !important;
     &:nth-child(1) {
       z-index: 4;
       @include corner-circle(30, 0.1)

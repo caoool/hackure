@@ -4,8 +4,9 @@ import { Meteor } from 'meteor/meteor'
 
 import MatchResults from './MatchResults.jsx'
 import RecentChats from './RecentChats.jsx'
-import { Star, Inbox, Search } from 'react-feather';
+import { Star, Mail, Search } from 'react-feather';
 import { CHAT_SIDEBAR_MODES } from '../constants'
+import * as Utils  from '../utils'
 
 export default class ChatSidebar extends Component {
   constructor(props) {
@@ -14,16 +15,16 @@ export default class ChatSidebar extends Component {
     this.switchChatPanel = this.switchChatPanel.bind(this)
 
     this.state = {
-      option: CHAT_SIDEBAR_MODES.matches
+      mode: CHAT_SIDEBAR_MODES.matches
     }
   }
 
   switchChatPanel(mode) {
-    this.setState({ option: mode })
+    this.setState({ mode: mode })
   }
 
   renderSidebarMode() {
-    switch(this.state.option) {
+    switch(this.state.mode) {
       case CHAT_SIDEBAR_MODES.matches:
         return <MatchResults />
       default:
@@ -31,25 +32,32 @@ export default class ChatSidebar extends Component {
     }
   }
 
+  activeIconStyles(mode) {
+    return mode == this.state.mode ? { color: Utils.colorsArrayToString(Session.get('appColor'), 1) } : {}
+  }
+
   renderSidebarMenu() {
     return (
       <div className="_menu columns -gapless -oneline">
         <button
-          className="column col-4" 
-          onClick      = { () => this.switchChatPanel(CHAT_SIDEBAR_MODES.matches) }
+          className ="column col-4" 
+          onClick   = { () => this.switchChatPanel(CHAT_SIDEBAR_MODES.matches) }
+          style     = {this.activeIconStyles(CHAT_SIDEBAR_MODES.matches)}
         >
           <header><Star /></header>
           <footer>Matches</footer>
         </button>
         <button
-          className="column col-4" 
-          onClick = { () => this.switchChatPanel(CHAT_SIDEBAR_MODES.recent) }
+          className ="column col-4" 
+          onClick   = { () => this.switchChatPanel(CHAT_SIDEBAR_MODES.recent) }
+          style     = {this.activeIconStyles(CHAT_SIDEBAR_MODES.recent)}
         >
-          <header><Inbox /></header>
+          <header><Mail /></header>
           <footer>Recent</footer>
         </button>
         <button
-          className="column col-4"
+          className ="column col-4"
+          style     = {this.activeIconStyles(CHAT_SIDEBAR_MODES.filter)}
         >
           <header><Search /></header>
           <footer>Filter</footer>
