@@ -46,17 +46,17 @@ class MessagingInterface extends Component {
         <section className="_menu">
           { otherUser.profile.name }
         </section>
-        <section className="active-chat">
-          <ChatMessages
-            messages  = { messages }
-            otherUser = { otherUser }
-          />
+        <ChatMessages
+          messages  = { messages }
+          otherUser = { otherUser }
+        />
+        <section className="_composer">
           <form
             onSubmit = { this.sendMessage }
           >
-            <textarea
+            <input
               ref         = 'messageInput'
-              placeholder = 'Please type your message here.'
+              placeholder = 'Type a message...'
               onKeyPress  = { this.handleKeyPress }
             />
           </form>

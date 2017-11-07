@@ -1,13 +1,59 @@
 .messaging-interface {
   width: 75%;
   flex: 1 0 25%;
+  position: relative;
   ._menu {
     @include flex(center, center);
     height: $chat-menu-height;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
     border-bottom: 1px solid $gray-color-light;
     font-weight: $font-weight-4;
     font-size: $font-size-lg;
     font-family: $mono-font-family;
+  }
+  ._composer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    input {
+      width: 100%;
+      height: $chat-input-height;
+      position: absolute;
+      bottom: 0;
+      border: none;
+      border-top: 1px solid $gray-color-light;
+      resize: none;
+      font-family: $mono-font-family;
+      font-size: $font-size-sm;
+      padding: $unit-2 $unit-4;
+      overflow: auto;
+      outline: none;
+      &:hover, &:focus, &:active {
+        outline: none;
+        box-shadow: none;
+      }
+      @include flex(center, center);
+    }
+  }
+  ::-webkit-input-placeholder { 
+    color: rgba($dark-color, 0.5);
+    letter-spacing: 1px;
+  }
+  ::-moz-placeholder { 
+    color: rgba($dark-color, 0.5);
+    letter-spacing: 1px;
+  }
+  :-ms-input-placeholder { 
+    color: rgba($dark-color, 0.5);
+    letter-spacing: 1px;
+  }
+  :-moz-placeholder { 
+    color: rgba($dark-color, 0.5);
+    letter-spacing: 1px;
   }
 }
 
@@ -19,5 +65,38 @@
 }
 
 .active-chat {
-  padding: $unit-4;
+  padding: $unit-6;
+  position: absolute;
+  top: $chat-menu-height;
+  height: calc(100% - (#{$chat-menu-height} + #{$chat-input-height}));
+  overflow: scroll;
+}
+
+.message {
+  font-family: $mono-font-family;
+  margin: $unit-4;
+  font-size: $font-size-sm;
+  width: 60%;
+  min-width: 400px;
+  max-width: 100%;
+  @include clearfix();
+  float: left;
+  &.-self {
+    text-align: right;
+    float: right;
+  }
+  header{
+    margin-bottom: $unit-1;
+    ._name {
+      font-weight: $font-weight-4;
+      font-size: $font-size;
+    }
+    ._date {
+      position: relative;
+      font-size: $font-size / 1.5;
+    }
+  }
+  section {
+    color: rgba($dark-color, 0.75);
+  }
 }

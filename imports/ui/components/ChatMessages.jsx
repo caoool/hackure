@@ -5,7 +5,6 @@ import { Meteor } from 'meteor/meteor'
 import { Messages } from '../../api/messages.js'
 
 import ChatMessage from './ChatMessage.jsx'
-import * as Utils  from '../utils'
 
 export default class ChatMessages extends Component {
   constructor(props) {
@@ -25,9 +24,9 @@ export default class ChatMessages extends Component {
 
   render() {
     return (
-      <div>
+      <section className="active-chat">
         { this.renderMessages() }
-      </div>
+      </section>
     )
   }
 }

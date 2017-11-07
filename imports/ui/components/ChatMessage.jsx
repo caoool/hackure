@@ -1,28 +1,33 @@
 import React, { Component } from 'react'
 
 import { Meteor } from 'meteor/meteor'
+import moment from 'moment'
+import * as Utils  from '../utils'
 
 export default class ChatMessage extends Component {
   constructor(props) {
     super(props)
+
+    this.color = Utils.colorsArrayToString(Session.get('appColor'), 1);
   }
 
   render() {
+    const { message, otherUser } = this.props,
+          ownUserChat   = message.createdBy == Meteor.userId(),
+          classNameMod  = `message ${ ownUserChat ? "-self" : "" }`,
+          messageName   = ownUserChat ? Meteor.user().profile.name : otherUser.profile.name,
+          ownNameStyles = ownUserChat ? { color: this.color } : {};
+
     return (
-      <div style={styles.message}>
-        {(this.props.message.createdBy == Meteor.userId()) ? (
-          <p>{Meteor.user().profile.name} (self):</p>
-        ) : (
-          <p>{this.props.otherUser.profile.name}:</p>
-        )}
-        <p>{this.props.message.text}</p>
+      <div className={classNameMod}>
+        <header>
+          <span className="_name" style={ownNameStyles}>{ messageName } </span> 
+          <span className="_date">{ moment(message.createdAt).format("M/D h:m a") }</span>
+        </header>
+        <section>
+          { message.text }
+        </section>
       </div>
     )
-  }
-}
-
-const styles = {
-  message: {
-    border: 'solid 2px yellow'
   }
 }

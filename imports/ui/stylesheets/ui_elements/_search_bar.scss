@@ -44,21 +44,20 @@
       margin: auto;
     }
   }
-}
-
-::-webkit-input-placeholder { 
-  color: rgba($light-color, 0.5);
-  letter-spacing: 1px;
-}
-::-moz-placeholder { 
-  color: rgba($light-color, 0.5);
-  letter-spacing: 1px;
-}
-:-ms-input-placeholder { 
-  color: rgba($light-color, 0.5);
-  letter-spacing: 1px;
-}
-:-moz-placeholder { 
-  color: rgba($light-color, 0.5);
-  letter-spacing: 1px;
+  ::-webkit-input-placeholder { 
+    color: rgba($light-color, 0.5);
+    letter-spacing: 1px;
+  }
+  ::-moz-placeholder { 
+    color: rgba($light-color, 0.5);
+    letter-spacing: 1px;
+  }
+  :-ms-input-placeholder { 
+    color: rgba($light-color, 0.5);
+    letter-spacing: 1px;
+  }
+  :-moz-placeholder { 
+    color: rgba($light-color, 0.5);
+    letter-spacing: 1px;
+  }
 }
