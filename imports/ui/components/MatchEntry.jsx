@@ -51,7 +51,7 @@ export default class MatchEntry extends Component {
           <article>
             <div>
               <div>{ match.user.profile.name }</div>
-              <div className="_query">Because you searched: { match.query.text }</div>
+              <div className="_query">Because they searched: { match.query.text }</div>
             </div>
           </article>
         </section>

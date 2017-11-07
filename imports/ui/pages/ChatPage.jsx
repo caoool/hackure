@@ -3,6 +3,7 @@ import { withTracker }      from 'meteor/react-meteor-data'
 
 import ChatSidebar from '../components/ChatSidebar'
 import MessagingInterface from '../components/MessagingInterface'
+import { Chats } from '../../api/chats.js'
 
 import * as Utils from '../utils'
 

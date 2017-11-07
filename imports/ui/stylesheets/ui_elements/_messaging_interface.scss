@@ -1,0 +1,23 @@
+.messaging-interface {
+  width: 75%;
+  flex: 1 0 25%;
+  ._menu {
+    @include flex(center, center);
+    height: $chat-menu-height;
+    border-bottom: 1px solid $gray-color-light;
+    font-weight: $font-weight-4;
+    font-size: $font-size-lg;
+    font-family: $mono-font-family;
+  }
+}
+
+.chat-prompt {
+  @include flex(center, center);
+  width: 100%;
+  height: 100%;
+  font-family: $mono-font-family;
+}
+
+.active-chat {
+  padding: $unit-4;
+}

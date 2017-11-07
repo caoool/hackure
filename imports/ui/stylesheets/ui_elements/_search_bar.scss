@@ -40,6 +40,9 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     width: $search-button-width;
+    > svg {
+      margin: auto;
+    }
   }
 }
 

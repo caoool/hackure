@@ -6,12 +6,16 @@ import { withTracker } from 'meteor/react-meteor-data'
 
 import { Chats } from '../../api/chats.js'
 import { Messages } from '../../api/messages.js'
+import { Matches } from '../../api/matches.js'
 
 import ChatMessages from './ChatMessages.jsx'
 
 class MessagingInterface extends Component {
   constructor(props) {
     super(props)
+
+    this.sendMessage    = this.sendMessage.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   sendMessage(event) {
@@ -34,31 +38,62 @@ class MessagingInterface extends Component {
     }
   }
 
+  renderChatMessages() {
+    const { otherUser, messages } = this.props
+    console.log(messages);
+    return (
+      <div>
+        <section className="_menu">
+          { otherUser.profile.name }
+        </section>
+        <section className="active-chat">
+          <ChatMessages
+            messages  = { messages }
+            otherUser = { otherUser }
+          />
+          <form
+            onSubmit = { this.sendMessage }
+          >
+            <textarea
+              ref         = 'messageInput'
+              placeholder = 'Please type your message here.'
+              onKeyPress  = { this.handleKeyPress }
+            />
+          </form>
+        </section>
+      </div>
+    )
+  }
+
+  renderPromptNoMatches() {
+    return "You have not matched with anyone yet. Search for what you're interested in find matches!"
+  }
+
+  renderPromptWithMatches() {
+    return "Select a match in the sidebar to start or continue a conversation!"
+  }
+
+  renderPrompt() {
+    const { matches } = this.props
+    return (
+      <section className="chat-prompt"> 
+        { matches.length ?
+           this.renderPromptWithMatches() : 
+           this.renderPromptNoMatches() 
+        }
+      </section>
+    )
+  }
+
+  renderContext() {
+    const { otherUser } = this.props
+    return otherUser ? this.renderChatMessages() : this.renderPrompt();
+  }
+
   render() {
     return (
       <div className="messaging-interface">
-        {this.props.otherUser ? (
-          <div>
-            <h2>
-              Chatting with: {this.props.otherUser.profile.name}
-            </h2>
-            <ChatMessages
-              messages={this.props.messages}
-              otherUser={this.props.otherUser}
-            />
-            <form
-              onSubmit={this.sendMessage.bind(this)}>
-              <textarea
-                ref='messageInput'
-                placeholder='Please type your message here.'
-                onKeyPress={this.handleKeyPress.bind(this)}
-              />
-              <button type='submit'> Send </button>
-            </form>
-          </div>
-        ) : (
-          <h2>Chat Room</h2>
-        )}
+        { this.renderContext() }
       </div>
     )
   }
@@ -68,13 +103,15 @@ export default withTracker((props) => {
   const currentChatId = Session.get('CURRENT_CHAT_ID')
   Meteor.subscribe('chats.chat_id', currentChatId)
   Meteor.subscribe('messages.chat', currentChatId)
+  Meteor.subscribe('matches.user', Meteor.userId())
 
   const chat = Chats.findOne()
   let userIds = []
   let otherUserId = ''
   if (chat) {
-    const userIds = chat.userIds
-    const index = userIds.indexOf(Meteor.userId())
+    const userIds = chat.userIds,
+          index   = userIds.indexOf(Meteor.userId());
+
     userIds.splice(index, 1)
     otherUserId = userIds[0]
   }
@@ -84,6 +121,7 @@ export default withTracker((props) => {
   return {
     chat: Chats.findOne(),
     otherUser: otherUser,
-    messages: Messages.find().fetch()
+    messages: Messages.find().fetch(),
+    matches: Matches.find().fetch()
   }
 })(MessagingInterface)

@@ -24,10 +24,15 @@ class HomePage extends Component {
   renderLoginState() {
     const { currentUser, appColor } = this.props,
           loginstate = currentUser ? 
-              <SearchBar appColor={appColor} /> :
+              <SearchBar appColor={appColor} redirect={() => this.redirectToChatPage() }/> :
               <LoginMenu buttonColor={appColor} />
     
     return loginstate
+  }
+
+  redirectToChatPage() {
+    const { history } = this.props
+    history.push("/chat");
   }
 
   render() {

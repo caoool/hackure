@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { Meteor } from 'meteor/meteor'
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
 
 import { Chats } from '../../api/chats.js'
 
@@ -13,10 +13,11 @@ class RecentChats extends Component {
   }
 
   renderChats() {
-    return this.props.recentChats.map((chat) => (
+    const { recentChats } = this.props
+    return recentChats.map((chat) => (
       <RecentChat
-        key={chat._id}
-        chat={chat}
+        key  = { chat._id }
+        chat = { chat }
       />
     ))
   }
@@ -24,17 +25,16 @@ class RecentChats extends Component {
   render() {
     return (
       <div>
-        <h2>Recent Chats</h2>
-        {this.renderChats()}
+        { this.renderChats() }
       </div>
     )
   }
 }
 
-export default createContainer(() => {
+export default withTracker(() => {
   Meteor.subscribe('chats.user', Meteor.userId())
   
   return {
     recentChats: Chats.find().fetch()
   }
-}, RecentChats)
+})(RecentChats)

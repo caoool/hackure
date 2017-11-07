@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
 import { Meteor } from 'meteor/meteor'
-import { createContainer } from 'meteor/react-meteor-data'
+import { withTracker } from 'meteor/react-meteor-data'
 
 import { Matches } from '../../api/matches.js'
+import { Chats } from '../../api/chats.js'
 
 import MatchEntry from './MatchEntry.jsx'
 
@@ -25,10 +26,10 @@ class MatchResults extends Component {
   }
 }
 
-export default createContainer(() => {
+export default withTracker(() => {
   Meteor.subscribe('matches.user', Meteor.userId())
   
   return {
-    matches: Matches.find({}, {sort: {score: -1}}).fetch()
+    matches     : Matches.find({}, { sort: { score: -1 } }).fetch()
   }
-}, MatchResults)
+})(MatchResults)

@@ -14,6 +14,8 @@ export default class SearchBar extends Component {
   }
 
   search(event) {
+    const { redirect } = this.props;
+
     event.preventDefault()
 
     const text = ReactDOM.findDOMNode(this.refs.searchInput).value.trim()
@@ -29,6 +31,8 @@ export default class SearchBar extends Component {
 
     Meteor.call('queries.match', query)
     Meteor.call('queries.insert', query)
+
+    redirect();
   }
 
   render() {
