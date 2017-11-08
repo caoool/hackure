@@ -1,17 +1,43 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data'
-import { MessageSquare, User, HelpCircle, LogOut, LogIn } from 'react-feather';
+import { MessageSquare, User, HelpCircle, Search } from 'react-feather';
 import * as Utils from '../utils'
 
-// import SearchBar from './SearchBar.jsx'
+import SearchBar from './SearchBar.jsx'
 import LoginMenu from './LoginMenu.jsx'
 import Logo from './Logo.jsx'
+import AppBarItem from './AppBarItem.jsx'
 
 class AppBar extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      searchOpen: false
+    }
+  }
+
+  setSearchOpen(val) {
+    this.setState({ searchOpen: val });
+  }
+
+  renderSearchComponent() {
+    const { loggedIn }   = this.props,
+          { searchOpen } = this.state;
+
+    return searchOpen ? 
+      <SearchBar /> : 
+      <AppBarItem 
+        Icon    = { Search } 
+        action  = { () => this.setSearchOpen(true) } 
+        show    = { loggedIn }
+        tooltip = "New Search" 
+      /> 
+  }
+
   render() {
-    const { currentUser } = this.props,
-          hideIfLoggedOut = currentUser ? {} : { display: 'none' };
+    const { loggedIn } = this.props;
 
     return (
       <header className="navbar">
@@ -21,15 +47,25 @@ class AppBar extends Component {
           </Link>
         </section>
         <section className="_icons">
-          <Link to="/chat" style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Chat">
-            <MessageSquare color="white" />
-          </Link>
-          <Link to="/profile" style={hideIfLoggedOut} className="tooltip -bottom" data-tooltip="Profile">
-            <User color="white" />
-          </Link>
-          <Link to="/about" className="tooltip -bottom" data-tooltip="What is This?">
-            <HelpCircle color="white" />
-          </Link>
+       
+          <AppBarItem 
+            Icon    = { MessageSquare } 
+            link    = "/chat" 
+            show    = { loggedIn } 
+            tooltip = "Chat" 
+          /> 
+          <AppBarItem 
+            Icon    = { User } 
+            link    = "/profile" 
+            show    = { loggedIn } 
+            tooltip = "Profile" 
+          /> 
+          <AppBarItem 
+            Icon    = { HelpCircle } 
+            link    = "/about" 
+            show    = { true } 
+            tooltip = "What is This?" 
+          /> 
           <LoginMenu context="menu" />
         </section> 
       </header>
@@ -39,6 +75,6 @@ class AppBar extends Component {
 
 export default withTracker(() => {
   return {
-    currentUser: Meteor.user()
+    loggedIn: Meteor.userId() ? true : false
   }
 })(AppBar)

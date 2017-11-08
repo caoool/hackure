@@ -11,6 +11,8 @@ import { ArrowRight } from 'react-feather';
 export default class SearchBar extends Component {
   constructor(props) {
     super(props)
+
+    this.color = Session.get("appColor")
   }
 
   search(event) {
@@ -36,7 +38,6 @@ export default class SearchBar extends Component {
   }
 
   render() {
-    const { appColor } = this.props;
     const placeholder = `I want to change the world`;
     return (
       <div className="search-bar">
@@ -48,7 +49,7 @@ export default class SearchBar extends Component {
         <button
           onClick = { this.search.bind(this) }
         >
-          <ArrowRight color={Utils.colorsArrayToString(appColor, 1)} />
+          <ArrowRight color={Utils.colorsArrayToString(this.color, 1)} />
         </button>
       </div>
     )
