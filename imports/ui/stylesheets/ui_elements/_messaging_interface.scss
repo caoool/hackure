@@ -39,24 +39,25 @@
       @include flex(center, center);
     }
   }
-  ::-webkit-input-placeholder { 
-    color: rgba($dark-color, 0.5);
-    letter-spacing: 1px;
-  }
-  ::-moz-placeholder { 
-    color: rgba($dark-color, 0.5);
-    letter-spacing: 1px;
-  }
-  :-ms-input-placeholder { 
-    color: rgba($dark-color, 0.5);
-    letter-spacing: 1px;
-  }
-  :-moz-placeholder { 
-    color: rgba($dark-color, 0.5);
-    letter-spacing: 1px;
-  }
 }
 
+::-webkit-input-placeholder { 
+  color: rgba($dark-color, 0.5);
+  letter-spacing: 1px;
+}
+::-moz-placeholder { 
+  color: rgba($dark-color, 0.5);
+  letter-spacing: 1px;
+}
+:-ms-input-placeholder { 
+  color: rgba($dark-color, 0.5);
+  letter-spacing: 1px;
+}
+:-moz-placeholder { 
+  color: rgba($dark-color, 0.5);
+  letter-spacing: 1px;
+}
+  
 .chat-prompt {
   @include flex(center, center);
   width: 100%;

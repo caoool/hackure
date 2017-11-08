@@ -17,6 +17,12 @@ export const colorsArrayToString = (colors, alpha = 1) => {
   return `rgba(${colors[0]},${colors[1]},${colors[2]},${alpha})`
 }
 
+export const cleanString = (string) => {
+  if (string) {
+    return string.trim().toLowerCase();
+  }
+}
+
 const componentToHex = (c) => {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;

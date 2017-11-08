@@ -40,7 +40,7 @@ class MessagingInterface extends Component {
 
   renderChatMessages() {
     const { otherUser, messages } = this.props
-    console.log(messages);
+
     return (
       <div>
         <section className="_menu">

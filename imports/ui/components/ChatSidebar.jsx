@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Meteor } from 'meteor/meteor'
 
 import MatchResults from './MatchResults.jsx'
+import MatchesFilter from './MatchesFilter.jsx'
 import RecentChats from './RecentChats.jsx'
 import { Star, Mail, Search } from 'react-feather';
 import { CHAT_SIDEBAR_MODES } from '../constants'
@@ -12,8 +13,9 @@ export default class ChatSidebar extends Component {
   constructor(props) {
     super(props)
 
-    this.appColor = Utils.colorsArrayToString(Session.get('appColor'), 1)
-    this.switchChatPanel = this.switchChatPanel.bind(this)
+    this.appColor            = Utils.colorsArrayToString(Session.get('appColor'), 1)
+    this.switchChatPanel     = this.switchChatPanel.bind(this)
+    this.cancelSidebarFilter = this.cancelSidebarFilter.bind(this)
 
     this.state = {
       mode: CHAT_SIDEBAR_MODES.matches
@@ -24,17 +26,26 @@ export default class ChatSidebar extends Component {
     this.setState({ mode: mode })
   }
 
-  renderSidebarMode() {
+  renderSidebarContent() {
     switch(this.state.mode) {
-      case CHAT_SIDEBAR_MODES.matches:
-        return <MatchResults />
+      case CHAT_SIDEBAR_MODES.recent:
+        return <RecentChats /> 
       default:
-        return <RecentChats />
+        return <MatchResults />
     }
   }
 
   activeIconStyles(mode) {
     return mode == this.state.mode ? { color: this.appColor } : {}
+  }
+
+  cancelSidebarFilter() {
+    this.switchChatPanel(CHAT_SIDEBAR_MODES.matches)
+    Session.set("MATCHES_FILTER")
+  }
+
+  renderSidebarMenuFilter() {
+    return <MatchesFilter cancel={this.cancelSidebarFilter} />
   }
 
   renderSidebarMenu() {
@@ -58,6 +69,7 @@ export default class ChatSidebar extends Component {
         </button>
         <button
           className ="column col-4"
+          onClick   = { () => this.switchChatPanel(CHAT_SIDEBAR_MODES.filter) }
           style     = {this.activeIconStyles(CHAT_SIDEBAR_MODES.filter)}
         >
           <header><Search /></header>
@@ -68,10 +80,12 @@ export default class ChatSidebar extends Component {
   }
 
   render() {
+    const { mode } = this.state
+
     return (
       <div className="chat-sidebar">
-        { this.renderSidebarMenu() }
-        { this.renderSidebarMode() }
+        { mode == CHAT_SIDEBAR_MODES.filter ? this.renderSidebarMenuFilter() : this.renderSidebarMenu() }
+        { this.renderSidebarContent() }
       </div>
     )
   }
