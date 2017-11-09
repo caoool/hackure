@@ -15,6 +15,14 @@ export default class SearchBar extends Component {
     this.color = Utils.colorsArrayToString(Session.get("appColor"), 1)
 
     this.search = this.search.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
+  }
+
+  handleKeyPress(event) {
+    if (event.key == 'Enter') {
+      event.preventDefault()
+      this.search(event)
+    }
   }
 
   search(event) {
@@ -61,6 +69,7 @@ export default class SearchBar extends Component {
           type        = "text"
           ref         = "searchInput"
           placeholder = { placeholder }
+          onKeyUp     = { this.handleKeyPress }
         />
         { this.renderContextDependent() }
       </div>
