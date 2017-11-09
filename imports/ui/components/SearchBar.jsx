@@ -42,6 +42,7 @@ export default class SearchBar extends Component {
     Meteor.call('queries.match', query)
     Meteor.call('queries.insert', query)
 
+    this.refs.searchInput.value = "";
     redirect();
   }
 

@@ -8,7 +8,7 @@ import { Queries }       from '../../api/queries.js'
 class ProfilePage extends Component {
   renderQueries() {
     const { queries } = this.props,
-          queriesList = queries.map((query) => <Query text={query.text} />);
+          queriesList = queries.map((query) => <Query text={query.text} createdAt={query.createdAt} />);
 
     if (queries.length) {
       return (
@@ -41,7 +41,7 @@ export default withTracker(() => {
 
   return {
     currentUser : Meteor.user(),
-    queries     : Queries.find().fetch()
+    queries     : Queries.find({}, { sort: { createdAt: -1 } }).fetch()
   }
 })(ProfilePage);
 

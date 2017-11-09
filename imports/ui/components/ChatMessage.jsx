@@ -21,7 +21,7 @@ export default class ChatMessage extends Component {
       <div className={classNameMod}>
         <header>
           <span className="_name" style={ownNameStyles}>{ messageName } </span> 
-          <span className="_date">{ moment(message.createdAt).format("M/D h:m a") }</span>
+          <span className="_date">{ moment(message.createdAt).format("M/D h:mm a") }</span>
         </header>
         <section>
           { message.text }
