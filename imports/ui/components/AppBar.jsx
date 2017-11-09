@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data'
 import { MessageSquare, User, HelpCircle, Search } from 'react-feather';
@@ -22,12 +23,23 @@ class AppBar extends Component {
     this.setState({ searchOpen: val });
   }
 
+  redirectToChatPage() {
+    const { history, location } = this.props
+    if (location.pathname != "/chat") {
+      history.push("/chat");
+    } 
+  }
+
   renderSearchComponent() {
     const { loggedIn }   = this.props,
           { searchOpen } = this.state;
 
     return searchOpen ? 
-      <SearchBar /> : 
+      <SearchBar 
+        context  = "appbar" 
+        cancel   = { () => this.setSearchOpen(false) }
+        redirect = { () => this.redirectToChatPage() }
+      /> : 
       <AppBarItem 
         Icon    = { Search } 
         action  = { () => this.setSearchOpen(true) } 
@@ -40,14 +52,14 @@ class AppBar extends Component {
     const { loggedIn } = this.props;
 
     return (
-      <header className="navbar">
+      <header className="app-bar">
         <section className="_brand">
           <Link to="/">
             <Logo />
           </Link>
         </section>
         <section className="_icons">
-       
+          { this.renderSearchComponent() }
           <AppBarItem 
             Icon    = { MessageSquare } 
             link    = "/chat" 
@@ -73,8 +85,8 @@ class AppBar extends Component {
   }
 }
 
-export default withTracker(() => {
+export default withRouter(withTracker(() => {
   return {
     loggedIn: Meteor.userId() ? true : false
   }
-})(AppBar)
+})(AppBar));

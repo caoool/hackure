@@ -28,7 +28,7 @@ export default class MatchesFilter extends Component {
           placeholder = "Type to filter matches..."
           onKeyUp     = { this.handleKeyPress }
         />
-        <div className="_cancel">
+        <div className="cancel">
           <X onClick={cancel} />
         </div>
       </div>

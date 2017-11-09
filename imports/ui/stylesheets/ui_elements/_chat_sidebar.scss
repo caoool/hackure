@@ -42,16 +42,6 @@
     outline: none;
     border: none;
   }
-  ._cancel {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    @include flex(center, center);
-    > * {
-      cursor: pointer;
-    }
-  }
 }
 
 

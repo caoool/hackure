@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import ReactDOM             from 'react-dom'
+import ReactDOM from 'react-dom'
 
 import { Meteor }     from 'meteor/meteor'
-
+import { X } from 'react-feather';
 import { Queries } from '../../api/queries.js'
 import * as Utils  from '../utils'
 
@@ -12,7 +12,9 @@ export default class SearchBar extends Component {
   constructor(props) {
     super(props)
 
-    this.color = Session.get("appColor")
+    this.color = Utils.colorsArrayToString(Session.get("appColor"), 1)
+
+    this.search = this.search.bind(this)
   }
 
   search(event) {
@@ -37,20 +39,30 @@ export default class SearchBar extends Component {
     redirect();
   }
 
+  renderPlaceholder() {
+    const { context } = this.props
+  }
+
+  renderContextDependent() {
+    const { context, cancel } = this.props;
+
+    return context == "appbar" ?
+      <a className="cancel" onClick={cancel}><X color="white" size={16} /></a> :
+      <button onClick={this.search}><ArrowRight color={this.color} /></button>;
+  }
+
   render() {
-    const placeholder = `I want to change the world`;
+    const { context } = this.props,
+          placeholder = context == "appbar" ? "Type a new search here..." : "I want to change the world";
+
     return (
       <div className="search-bar">
-        <textarea
+        <input
           type        = "text"
           ref         = "searchInput"
           placeholder = { placeholder }
-        ></textarea>
-        <button
-          onClick = { this.search.bind(this) }
-        >
-          <ArrowRight color={Utils.colorsArrayToString(this.color, 1)} />
-        </button>
+        />
+        { this.renderContextDependent() }
       </div>
     )
   }

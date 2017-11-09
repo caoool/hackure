@@ -1,5 +1,5 @@
 // Navbar
-.navbar {
+.app-bar {
   height: $appbar-height;
   padding: 1.5rem;
   width: 100%;
@@ -19,6 +19,7 @@
     a {
       margin: 0 1rem;
       cursor: pointer;
+      @include flex(center, center);
       &:last-child {
         margin-right: 0;
       }
