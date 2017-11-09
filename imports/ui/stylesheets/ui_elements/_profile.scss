@@ -4,5 +4,43 @@
     width: 75%;
     max-width: 100%;
     min-width: 400px;
+    h1 {
+      margin-bottom: 0;
+      display: inline-block;
+      &:after {
+        content: "";
+        width: 75%;
+        height: 6px;
+        background: rgba($light-color, 0.2);
+        display: block;
+        margin: $unit-3 0;
+      }
+    }
+  }
+}
+
+.queries {
+  font-family: $mono-font-family;
+  header {
+    font-size: $font-size * 1.5;
+    font-weight: $font-weight-4;
+  }
+  ul {
+    position: relative;
+    margin-left: 25px;
+    li {
+      list-style: none;
+    }
+    &:after {
+      content: "";
+      background: rgba($light-color, 0.2);
+      width: 5px;
+      height: 75%;
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -25px;
+    }
   }
 }
