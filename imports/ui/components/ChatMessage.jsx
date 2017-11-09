@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-
 import { Meteor } from 'meteor/meteor'
-import moment from 'moment'
-import * as Utils  from '../utils'
+import moment     from 'moment'
+import * as Utils from '../utils'
 
 export default class ChatMessage extends Component {
   constructor(props) {
     super(props)
 
-    this.color = Utils.colorsArrayToString(Session.get('appColor'), 1);
+    this.color = Utils.colorsArrayToString(Session.get('APP_COLOR'), 1);
   }
 
   render() {

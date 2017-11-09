@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-
-import { Meteor } from 'meteor/meteor'
-import { Session } from 'meteor/session'
+import { Meteor }      from 'meteor/meteor'
+import { Session }     from 'meteor/session'
 import { withTracker } from 'meteor/react-meteor-data'
-import * as Utils  from '../utils'
+import * as Utils      from '../utils'
 
 class RecentChat extends Component {
   constructor(props) {
     super(props)
 
-    this.color = Session.get("appColor")
+    this.color = Utils.colorsArrayToString(Session.get("APP_COLOR"), 0.8)
     this.chat  = this.chat.bind(this);
   }
 
@@ -20,7 +19,7 @@ class RecentChat extends Component {
 
   render() {
     const { otherUser, active } = this.props,
-          chatStyle = active ? { color: "white", background: Utils.colorsArrayToString(this.color, 0.8)} : {};
+          chatStyle = active ? { color: "white", background: this.color} : {};
 
     return (
       <div className="match-entry" style={chatStyle} onClick={this.chat}>

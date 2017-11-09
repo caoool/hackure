@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-
-import { Meteor } from 'meteor/meteor'
-import { Session } from 'meteor/session'
+import { Meteor }      from 'meteor/meteor'
+import { Session }     from 'meteor/session'
 import { withTracker } from 'meteor/react-meteor-data'
-
-import { Chats } from '../../api/chats.js'
-import { Messages } from '../../api/messages.js'
-import { Matches } from '../../api/matches.js'
-
-import ChatMessages from './ChatMessages.jsx'
+import { Chats }       from '../../api/chats.js'
+import { Messages }    from '../../api/messages.js'
+import { Matches }     from '../../api/matches.js'
+import ChatMessages    from './ChatMessages.jsx'
 
 class MessagingInterface extends Component {
   constructor(props) {
@@ -20,13 +17,14 @@ class MessagingInterface extends Component {
 
   sendMessage(event) {
     event.preventDefault()
-    const text = this.refs.messageInput.value.trim()
-    const message = {
-      chatId: this.props.chat._id,
-      text: text,
-      createdAt: new Date(),
-      createdBy: Meteor.userId()
-    }
+    const text = this.refs.messageInput.value.trim(),
+          message = {
+            chatId: this.props.chat._id,
+            text: text,
+            createdAt: new Date(),
+            createdBy: Meteor.userId()
+          }
+
     Meteor.call('messages.insert', message)
     this.refs.messageInput.value = ''
   }
@@ -51,9 +49,7 @@ class MessagingInterface extends Component {
           otherUser = { otherUser }
         />
         <section className="_composer">
-          <form
-            onSubmit = { this.sendMessage }
-          >
+          <form onSubmit={this.sendMessage}>
             <input
               ref         = 'messageInput'
               placeholder = 'Type a message...'

@@ -8,24 +8,31 @@ import LoginMenu         from '../components/LoginMenu'
 import * as Utils from '../utils'
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props)
+
+    this.color  = Utils.colorsArrayToString(Session.get('APP_COLOR'), 1)
+    this.animal = Session.get('APP_ANIMAL')
+  }
+
   renderAnimalBackground() {
-    const { appColor, appAnimal } = this.props,
-          styles = {
-            figure: {
-              backgroundColor: Utils.colorsArrayToString(appColor, 1),
-              backgroundImage: `url(/images/animals/${appAnimal}.png)`
-            }
-          }   
+    const styles = {
+      figure: {
+        backgroundColor: this.color,
+        backgroundImage: `url(/images/animals/${this.animal}.png)`
+      }
+    }   
+
     return (
-      <figure className="animal-background" style={ styles.figure }></figure>
+      <figure className="animal-background" style={styles.figure}></figure>
     )  
   }
  
   renderLoginState() {
-    const { currentUser, appColor } = this.props,
+    const { currentUser } = this.props,
           loginstate = currentUser ? 
               <SearchBar redirect={ () => this.redirectToChatPage() }/> :
-              <LoginMenu buttonColor={appColor} />
+              <LoginMenu buttonColor={this.color} />
     
     return loginstate
   }
@@ -57,8 +64,6 @@ class HomePage extends Component {
 
 export default withTracker(() => {
   return {
-    appColor    : Session.get('appColor'),
-    appAnimal   : Session.get('appAnimal'),
     currentUser : Meteor.user()
   }
 })(HomePage);

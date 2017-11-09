@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom';
+import { withRouter }  from 'react-router'
+import { Link }        from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data'
 import { MessageSquare, User, HelpCircle, Search } from 'react-feather';
 import * as Utils from '../utils'
-
-import SearchBar from './SearchBar.jsx'
-import LoginMenu from './LoginMenu.jsx'
-import Logo from './Logo.jsx'
+import SearchBar  from './SearchBar.jsx'
+import LoginMenu  from './LoginMenu.jsx'
+import Logo       from './Logo.jsx'
 import AppBarItem from './AppBarItem.jsx'
 
 class AppBar extends Component {

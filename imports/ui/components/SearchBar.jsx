@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-
+import ReactDOM       from 'react-dom'
 import { Meteor }     from 'meteor/meteor'
-import { X } from 'react-feather';
-import { Queries } from '../../api/queries.js'
-import * as Utils  from '../utils'
-
+import { X }          from 'react-feather';
+import { Queries }    from '../../api/queries.js'
+import * as Utils     from '../utils'
 import { ArrowRight } from 'react-feather';
 
 export default class SearchBar extends Component {
   constructor(props) {
     super(props)
 
-    this.color = Utils.colorsArrayToString(Session.get("appColor"), 1)
+    this.color = Utils.colorsArrayToString(Session.get("APP_COLOR"), 1)
 
-    this.search = this.search.bind(this)
+    this.search         = this.search.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 

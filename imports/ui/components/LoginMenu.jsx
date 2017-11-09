@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-
-import { Meteor } from 'meteor/meteor'
-import { withTracker } from 'meteor/react-meteor-data'
-import * as Utils  from '../utils'
-
-import GoogleLogo from './GoogleLogo'
+import { Meteor }        from 'meteor/meteor'
+import { withTracker }   from 'meteor/react-meteor-data'
+import GoogleLogo        from './GoogleLogo'
 import { LogOut, LogIn } from 'react-feather';
+import * as Utils        from '../utils'
 
 class LoginMenu extends Component {
   constructor(props) {
@@ -34,17 +32,15 @@ class LoginMenu extends Component {
   loggedInState() {
     const { context } = this.props
 
-    if (context == "menu") {
-      return (
-        <a 
-          className    = "tooltip -bottom" 
-          data-tooltip = "Log Out" 
-          onClick      = { this.logout }
-        >
-          <LogOut color="white" />
-        </a>
-      )
-    }
+    return context == "menu" ? (
+      <a 
+        className    = "tooltip -bottom" 
+        data-tooltip = "Log Out" 
+        onClick      = { this.logout }
+      >
+        <LogOut color="white" />
+      </a>
+    ) : null;
   }
 
   loggedOutState() {
@@ -65,15 +61,15 @@ class LoginMenu extends Component {
   }
 
   render() {
-    const { currentUser, context } = this.props;
+    const { loggedIn, context } = this.props;
     
-    return currentUser ? this.loggedInState() : this.loggedOutState();
+    return loggedIn ? this.loggedInState() : this.loggedOutState();
   }
 }
 
 export default withTracker(() => {
   return {
-    currentUser: Meteor.user()
+    loggedIn : Meteor.userId() ? true : false
   }
 })(LoginMenu)
 

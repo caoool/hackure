@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { withTracker }      from 'meteor/react-meteor-data'
 import ConcentricCircles from '../components/ConcentricCircles'
-
-import * as Utils from '../utils'
 
 export default class AboutPage extends Component {
   render() {

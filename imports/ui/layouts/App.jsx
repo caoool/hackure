@@ -1,35 +1,30 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
-
-import { Session } from 'meteor/session';
-import  Utils from '../utils'
-import AuthRoute from './AuthRoute.jsx'
+import { Meteor }   from 'meteor/meteor';
+import { Session }  from 'meteor/session';
+import  Utils       from '../utils'
 import HomePage     from '../../ui/pages/HomePage.jsx';
 import ChatPage     from '../../ui/pages/ChatPage.jsx';
 import AboutPage    from '../../ui/pages/AboutPage.jsx';
 import ProfilePage  from '../../ui/pages/ProfilePage.jsx';
 import NotFoundPage from '../../ui/pages/NotFoundPage.jsx';
-import AppBar from '../components/AppBar.jsx';
+import AppBar       from '../components/AppBar.jsx';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props)
 
-    Session.set('appColor', Utils.randomColor())
-    Session.set('appAnimal', Utils.randomAnimal())
+    Session.set('APP_COLOR', Utils.randomColor())
+    Session.set('APP_ANIMAL', Utils.randomAnimal())
   }
 
   renderAppStyles() {
     return {
-      background: Utils.colorsArrayToString(Session.get('appColor'), 1)
+      background: Utils.colorsArrayToString(Session.get('APP_COLOR'), 1)
     }
   }
 
   render() {
-    const { isLoggedIn } = this.props
-
     return (
       <Router>
         <div className="app" style={this.renderAppStyles()}>
@@ -48,9 +43,3 @@ class App extends Component {
     )
   }
 }
-
-export default withTracker(() => {
-  return {
-    isLoggedIn : Meteor.user() ? true : false
-  }
-})(App);

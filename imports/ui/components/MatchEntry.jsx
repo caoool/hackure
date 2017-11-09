@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-
-import { Meteor } from 'meteor/meteor'
+import { Meteor }  from 'meteor/meteor'
 import { Session } from 'meteor/session'
-import moment from 'moment'
+import moment      from 'moment'
 import * as Utils  from '../utils'
 
 export default class MatchEntry extends Component {
   constructor(props) {
     super(props)
 
-    this.appColor = Utils.colorsArrayToString(Session.get('appColor'), 0.8)
     this.chat = this.chat.bind(this)
   }
 

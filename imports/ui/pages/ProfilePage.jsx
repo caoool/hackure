@@ -6,7 +6,7 @@ import * as Utils from '../utils'
 
 class ProfilePage extends Component {
   render() {
-    const { appColor, currentUser } = this.props,
+    const { currentUser } = this.props,
           title = currentUser ? <h1>Hello, { currentUser.profile.name } </h1> : ""
 
     return (
@@ -15,14 +15,13 @@ class ProfilePage extends Component {
         { title }
         </div>
         <ConcentricCircles />
-      </div>
+      </div> 
     );
   }
 }
 
 export default withTracker(() => {
   return {
-    appColor    : Session.get('APP_COLOR'),
     currentUser : Meteor.user()
   }
 })(ProfilePage);

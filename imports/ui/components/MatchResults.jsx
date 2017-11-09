@@ -1,19 +1,13 @@
 import React, { Component } from 'react'
-import includes from 'lodash/includes'
+import includes   from 'lodash/includes'
 import { Meteor } from 'meteor/meteor'
 import { withTracker } from 'meteor/react-meteor-data'
-
-import { Matches } from '../../api/matches.js'
-import { Chats } from '../../api/chats.js'
-
-import MatchEntry from './MatchEntry.jsx'
-import * as Utils  from '../utils'
+import { Matches }     from '../../api/matches.js'
+import { Chats }       from '../../api/chats.js'
+import MatchEntry      from './MatchEntry.jsx'
+import * as Utils      from '../utils'
 
 class MatchResults extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   filteredMatches() {
     const { matches, matchesFilter } = this.props 
     return matches.filter((match) => includes(Utils.cleanString(match.user.profile.name), Utils.cleanString(matchesFilter)))
@@ -27,11 +21,7 @@ class MatchResults extends Component {
   }
 
   render() {
-    return (
-      <div>
-        { this.renderMatches() }
-      </div>
-    )
+    return <div>{ this.renderMatches() }</div>
   }
 }
 

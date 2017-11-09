@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
-
-import { Meteor } from 'meteor/meteor'
-
+import { Meteor }   from 'meteor/meteor'
 import { Messages } from '../../api/messages.js'
-
-import ChatMessage from './ChatMessage.jsx'
+import ChatMessage  from './ChatMessage.jsx'
 
 export default class ChatMessages extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   renderMessages() {
     const { messages, otherUser } = this.props
     return messages.map((message) => (
