@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Meteor }        from 'meteor/meteor'
 import { withTracker }   from 'meteor/react-meteor-data'
 import GoogleLogo        from './GoogleLogo'
-import { LogOut, LogIn } from 'react-feather';
+import { LogOut, LogIn } from 'react-feather'
 import * as Utils        from '../utils'
 
 class LoginMenu extends Component {
@@ -63,7 +63,9 @@ class LoginMenu extends Component {
   render() {
     const { loggedIn, context } = this.props;
     
-    return loggedIn ? this.loggedInState() : this.loggedOutState();
+    return loggedIn ? 
+      this.loggedInState() : 
+      this.loggedOutState();
   }
 }
 

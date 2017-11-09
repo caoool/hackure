@@ -27,3 +27,12 @@ export const CHAT_SIDEBAR_MODES = {
   recent  : 1,
   filter  : 2
 }
+
+export const NOTIFICATION_TYPES = {
+  login: {
+    message: "Welcome! Type what you're interested in doing in the search box to get started."
+  },
+  logout: {
+    message: "Thanks and come back soon!"
+  }
+}

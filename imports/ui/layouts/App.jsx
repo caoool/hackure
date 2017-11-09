@@ -9,13 +9,45 @@ import AboutPage    from '../../ui/pages/AboutPage.jsx';
 import ProfilePage  from '../../ui/pages/ProfilePage.jsx';
 import NotFoundPage from '../../ui/pages/NotFoundPage.jsx';
 import AppBar       from '../components/AppBar.jsx';
+import { withTracker }      from 'meteor/react-meteor-data'
+import { NOTIFICATION_TYPES } from '../constants'
+import { Notification }  from 'react-notification'
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      notificationActive  : false,
+      notificationMessage : ""
+    }
+
+    this.addNotification     = this.addNotification.bind(this)
+    this.dismissNotification = this.dismissNotification.bind(this)
+
     Session.set('APP_COLOR', Utils.randomColor())
     Session.set('APP_ANIMAL', Utils.randomAnimal())
+  }
+
+  componentWillReceiveProps(oldprops) {
+    const { loggedIn } = this.props
+    if (loggedIn != oldprops.loggedIn) {
+      this.addNotification(loggedIn ? NOTIFICATION_TYPES.logout : NOTIFICATION_TYPES.login)
+    }
+  }
+
+  addNotification(type) {
+    this.setState({
+      notificationActive  : true,
+      notificationMessage : type.message
+    })
+  }
+
+  dismissNotification() {
+    this.setState({
+      notificationActive  : false,
+      notificationMessage : "",
+    })
   }
 
   renderAppStyles() {
@@ -24,10 +56,23 @@ export default class App extends Component {
     }
   }
 
+  renderNotifications() {
+    return (
+      <Notification
+        isActive     = { this.state.notificationActive }
+        message      = { this.state.notificationMessage }
+        dismissAfter = { 3000 }
+        onDismiss    = { this.dismissNotification }
+        onClick      = { this.dismissNotification }
+      />
+    )
+  }
+
   render() {
     return (
       <Router>
         <div className="app" style={this.renderAppStyles()}>
+          { this.renderNotifications() }
           <AppBar />
           <main>
             <Switch>
@@ -43,3 +88,9 @@ export default class App extends Component {
     )
   }
 }
+
+export default withTracker(() => {
+  return {
+    loggedIn : Meteor.userId() ? true : false
+  }
+})(App);

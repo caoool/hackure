@@ -29,3 +29,9 @@
 img {
   max-width: 100%;
 }
+
+.notification-bar {
+  font-family: $mono-font-family !important;
+  font-size: $font-size !important;
+  padding: $unit-3 $unit-6 !important;
+}

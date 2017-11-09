@@ -19,6 +19,7 @@
     "react-addons-pure-render-mixin": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-feather": "^1.0.7",
+    "react-notification": "^6.8.2",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "string-similarity": "^1.2.0",

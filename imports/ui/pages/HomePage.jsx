@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withTracker }      from 'meteor/react-meteor-data'
-
 import ConcentricCircles from '../components/ConcentricCircles'
 import SearchBar         from '../components/SearchBar'
 import LoginMenu         from '../components/LoginMenu'
