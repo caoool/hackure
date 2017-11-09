@@ -1,0 +1,6 @@
+.not-found {
+  color: $light-color;
+  @include flex(center,center);
+  position: relative;
+  top: -#{$appbar-height};
+}

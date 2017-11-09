@@ -22,8 +22,7 @@ class ProfilePage extends Component {
 
 export default withTracker(() => {
   return {
-    appColor    : Session.get('appColor'),
-    appAnimal   : Session.get('appAnimal'),
+    appColor    : Session.get('APP_COLOR'),
     currentUser : Meteor.user()
   }
 })(ProfilePage);
