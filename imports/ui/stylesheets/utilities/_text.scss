@@ -1,0 +1,86 @@
+// Text
+// Text alignment utilities
+.-left {
+  text-align: left;
+}
+
+.-right {
+  text-align: right;
+}
+
+.-center {
+  text-align: center;
+}
+
+.-justify {
+  text-align: justify;
+}
+
+// Text transform utilities
+.-lowercase {
+  text-transform: lowercase;
+}
+
+.-uppercase {
+  text-transform: uppercase;
+}
+
+.-capitalize {
+  text-transform: capitalize;
+}
+
+// Text style utilities
+.-normal {
+  font-weight: normal;
+}
+
+.-weight-1 {
+  font-weight: $font-weight-1;
+}
+
+.-weight-2 {
+  font-weight: $font-weight-2;
+
+}
+.-weight-3 {
+  font-weight: $font-weight-3;
+}
+
+.-weight-4 {
+  font-weight: $font-weight-4;
+}
+
+.-weight-5 {
+  font-weight: $font-weight-5;
+}
+
+.-italic {
+  font-style: italic;
+}
+
+.-small {
+  font-size: $font-size-sm;
+}
+
+.-large {
+  font-size: $font-size-lg;
+}
+
+
+
+// Text overflow utilities
+.-ellipsis {
+  @include text-ellipsis();
+}
+
+.-clip {
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.-break {
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+}

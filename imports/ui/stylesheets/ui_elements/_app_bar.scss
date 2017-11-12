@@ -1,0 +1,28 @@
+// Navbar
+.app-bar {
+  height: $appbar-height;
+  padding: 1.5rem;
+  width: 100%;
+  @include flex(space-between, center, wrap);
+  > section {
+    @include flex(center, center);
+  }
+  ._brand {
+    display: block;
+    width: 120px;
+    max-height: 100%;
+    path {
+      fill: #fff;
+    }
+  }
+  ._icons {
+    a {
+      margin: 0 1rem;
+      cursor: pointer;
+      @include flex(center, center);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

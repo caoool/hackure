@@ -1,0 +1,10 @@
+.-page.about {
+  color: $light-color;
+  ._content {
+    width: 75%;
+    max-width: 100%;
+    min-width: 400px;
+    margin: 0;
+    font-family: $mono-font-family;
+  }
+}

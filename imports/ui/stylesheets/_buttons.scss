@@ -1,0 +1,143 @@
+// Buttons
+button {
+  @include control-transition();
+  @include flex(center, center);
+  appearance: none;
+  background: $light-color;
+  border: none;
+  border-radius: $border-radius;
+  color: inherit;
+  cursor: pointer;
+  font-size: $font-size;
+  line-height: $line-height;
+  outline: none;
+  padding: $control-padding;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+  &.-large {
+    padding: $control-padding $control-padding * 2;
+  }
+  &.-raised {
+    box-shadow: $box-shadow-2;
+    &:hover, &:active, &:focus {
+      box-shadow: $box-shadow-3; 
+    }
+  }
+  &:not(.tooltip):after {
+    content: "";
+    @include control-transition();
+    @include positioning(absolute, 0, 0);
+    width: 100%;
+    height: 100%;
+    background: rgba($dark-color, 0.1);
+    opacity: 0;
+  }
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+  }
+  &:active,
+  &.active {
+    &.loading {
+      &::after {
+        border-bottom-color: $light-color;
+        border-left-color: $light-color;
+      }
+    }
+  }
+  &[disabled],
+  &:disabled,
+  &.disabled {
+    cursor: default;
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  // Button Link
+  &.-link {
+    background: transparent;
+    border-color: transparent;
+    color: $link-color;
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      color: $link-color-dark;
+    }
+  }
+
+  // Button Sizes
+  &.-sm {
+    font-size: $font-size-sm;
+    height: $control-size-sm;
+    padding: $control-padding-sm $control-padding-sm;
+  }
+
+  &.-lg {
+    font-size: $font-size-lg;
+    height: $control-size-lg;
+    padding: $control-padding-lg $control-padding-lg;
+  }
+
+  // Button Block
+  &.-block {
+    display: block;
+    width: 100%;
+  }
+
+  // Button Action
+  &.-action {
+    width: $control-size;
+    padding-left: 0;
+    padding-right: 0;
+
+    &.-sm {
+      width: $control-size-sm;
+    }
+
+    &.-lg {
+      width: $control-size-lg;
+    }
+  }
+
+  // Button Clear
+  &.-clear {
+    background: transparent;
+    border: 0;
+    color: currentColor;
+    height: $unit-4;
+    line-height: $unit-4;
+    margin-left: $unit-1;
+    margin-right: -2px;
+    opacity: 1;
+    padding: 0;
+    text-decoration: none;
+    width: $unit-4;
+
+    &:hover {
+      opacity: .95;
+    }
+
+    &::before {
+      content: "\2715";
+    }
+  }
+}
+
+.cancel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 5px;
+  font-size: inherit;
+  @include flex(center, center);
+  > * {
+    cursor: pointer;
+  }
+}

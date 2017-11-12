@@ -1,0 +1,85 @@
+.app-bar {
+  .search-bar {
+    width: 300px;
+    font-size: $font-size-lg / 1.5;
+    input, textarea {
+      height: $control-size;
+    }
+    .cancel {
+      position: absolute;
+      right: 0;
+      height: 100%;
+    }
+  }
+}
+
+.home {
+  .search-bar {
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;  
+    }
+  }
+}
+
+.search-bar {
+  width: 80%;
+  min-width: $control-min-width;
+  max-width: $control-max-width * 2;
+  position: relative;
+  font-size: $font-size-lg;
+  @include flex();
+  textarea {
+    line-height: $line-height * 2;
+    resize: vertical;
+  }
+  input {
+    line-height: $line-height;
+  }
+  input, textarea {
+    @include control-transition();
+    appearance: none;
+    background: rgba($light-color, 0.15);
+    background-image: none;
+    border: none;
+    border-radius: $border-radius; 
+    color: $light-color;
+    display: inline-flex;
+    font-weight: $font-weight-1;
+    font-family: $mono-font-family;
+    height: $control-size * 2;
+    outline: none;
+    padding: $control-padding;
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    letter-spacing: 1px;
+  }
+  button {
+    display: inline-flex;
+    padding: $control-padding;
+    border-radius: $border-radius;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: $search-button-width;
+    > svg {
+      margin: auto;
+    }
+  }
+  ::-webkit-input-placeholder { 
+    color: rgba($light-color, 0.5);
+    letter-spacing: 1px;
+  }
+  ::-moz-placeholder { 
+    color: rgba($light-color, 0.5);
+    letter-spacing: 1px;
+  }
+  :-ms-input-placeholder { 
+    color: rgba($light-color, 0.5);
+    letter-spacing: 1px;
+  }
+  :-moz-placeholder { 
+    color: rgba($light-color, 0.5);
+    letter-spacing: 1px;
+  }
+}

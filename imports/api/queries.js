@@ -6,6 +6,14 @@ import TextProcessor from '../lib/TextProcessor.js'
 
 export const Queries = new Mongo.Collection('queries')
 
+if (Meteor.isServer) {
+  Meteor.publish('queries.user', (userId) => {
+    return Queries.find({
+      createdBy: userId
+    })
+  })
+}
+
 Meteor.methods({
   'queries.insert'(query) {
     if (!Meteor.userId()) {

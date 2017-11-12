@@ -1,18 +1,39 @@
 {
-  "name": "hackure",
+  "name": "trybe",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "lint": "eslint .",
+    "pretest": "npm run lint --silent"
+  },
+  "eslintConfig": {
+    "extends": "@meteorjs/eslint-config-meteor"
   },
   "dependencies": {
     "babel-runtime": "^6.20.0",
     "lapack": "^0.1.0",
+    "lodash": "^4.17.4",
     "meteor-node-stubs": "~0.2.4",
+    "moment": "^2.19.1",
     "react": "^15.5.4",
     "react-addons-pure-render-mixin": "^15.5.2",
     "react-dom": "^15.5.4",
+    "react-feather": "^1.0.7",
+    "react-notification": "^6.8.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "string-similarity": "^1.2.0",
     "wordnet-db": "^3.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@meteorjs/eslint-config-meteor": "^1.0.5",
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-meteor": "^4.1.4",
+    "eslint-plugin-react": "^7.4.0"
+  }
 }
