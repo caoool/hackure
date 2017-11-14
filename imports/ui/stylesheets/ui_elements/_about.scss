@@ -6,5 +6,9 @@
     min-width: 400px;
     margin: 0;
     font-family: $mono-font-family;
+    p {
+      margin-top: 1rem;
+      line-height: 2rem;
+    }
   }
 }
